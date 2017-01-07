@@ -1,0 +1,67 @@
+<ion-view view-title="消息管理" >
+
+  <ion-content>
+  
+
+    <!-- 操作 -->
+    <div class="row">
+    <div class="col">
+        <button class="button button-icon icon ion-ios-minus-outline"
+          ng-click="data.showDelete = !data.showDelete; data.showReorder = false">  删除</button>
+      </div>
+      <div class="col">
+        <button class="button button-icon icon ion-compose"
+           ng-click="showModel()"> 添加</button>
+      </div>
+      <div class="col">
+        <button class="button button-icon icon ion-navicon" ng-click="data.showDelete = false; data.showReorder = !data.showReorder"> 排序</button>
+      </div>
+
+      
+    </div>
+
+    <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+
+      <ion-item ng-repeat="item in msgs" 
+                  item="item"
+                  href="#/tab/msg" class="item-remove-animate">
+       编号 {{ $index + 1 }} 的{{item.name}} 说： {{item.lastText}}
+        <ion-delete-button class="ion-minus-circled" 
+                             ng-click="onItemDelete(item)"></ion-delete-button>
+
+        <ion-option-button class="button-assertive"
+                             ng-click="edit(item)">编辑</ion-option-button>
+        <ion-option-button class="button-calm"
+                             ng-click="share(item)">分享</ion-option-button>
+        <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+      </ion-item>
+
+    </ion-list>
+
+ 
+    <!-- 模态框 -->
+    <script id="templates/modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">添加信息</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">取消</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">编号</span>
+              <input ng-model="newUser.id" type="text"></label>
+            <label class="item item-input">
+              <span class="input-label">姓名</span>
+              <input ng-model="newUser.name" type="text"></label>
+            <label class="item item-input">
+              <span class="input-label">内容</span>
+              <input ng-model="newUser.lastText" type="text"></label>
+            <button class="button button-full button-positive" ng-click="createContact(newUser)">更新</button>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+  </ion-content>
+
+</ion-view>
