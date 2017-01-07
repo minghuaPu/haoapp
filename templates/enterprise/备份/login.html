@@ -1,0 +1,39 @@
+<ion-view title="登录">
+  <ion-content>
+    <div class="list">
+        <form action="/" name="myForm">
+      <label class="item item-input">
+          <span class="input-label">用户名</span>
+          <input    ng-focus="hide_msg();" type="text" ng-model="user.user_name" name="user"  required>
+
+
+        </label>
+        <label class="item item-input">
+          <span class="input-label">密  码</span>
+          <input ng-focus="hide_msg();" type="password" ng-minlength="6" ng-maxlength="12" ng-model="user.user_pwd" name="password" required>
+            
+          </label>
+
+      </div>
+      <div class="padding">
+
+          <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+            <span ng-show="myForm.user.$error.required">用户名是必须的。</span>
+          </span>
+         <span style="color:red"> {{ success }} </span>
+        <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+              <span ng-show="myForm.password.$error.required">密码是必须的。</span>
+              <span ng-show="myForm.password.$error.minlength">密码不能小于6位！</span>
+              <span ng-show="myForm.password.$error.maxlength">密码不能大于12位！</span>
+            </span>
+        <button class="button button-block button-positive" ng-disabled="  myForm.user.$invalid ||
+ myForm.password.$invalid" ng-click="signIn(user)">立即登录</button>
+  
+        <p class="text-center">
+          <a href="#/forgot-password">找回密码</a>
+        </p>
+      </div>
+   
+           </form>
+  </ion-content>
+</ion-view>

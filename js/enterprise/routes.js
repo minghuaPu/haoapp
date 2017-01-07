@@ -8,7 +8,7 @@
 angular.module('enterprise')
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-
+  // $rootScope.env=ENV;
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
@@ -19,116 +19,58 @@ angular.module('enterprise')
       url:'/login',
       templateUrl:'templates/enterprise/login.html',
       controller:'LoginCtrl'
-    }
-
-    )
+    })
+  
   // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-        
+      .state('tab', {
+        url: '/tab',
+        abstract: true,
+        templateUrl: 'templates/enterprise/tabs.html'
+      })
 
-    templateUrl: 'templates/enterprise/tabs.html',
-    // data: { // 设置进入角色为 admin 或 teacher
-    //   authorizedRoles:['admin','teacher']
-    // }
-  })
+      // Each tab has its own nav history stack:
 
-  // Each tab has its own nav history stack:
-
-  .state('tab.home', {
-    url: '/home',
-    views: {
-      'tab-home': {
-        templateUrl: 'templates/enterprise/tab-home.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/enterprise/tab-chats.html',
-          controller: 'ChatsCtrl'
+      .state('tab.expert', {
+        url: '/expert',
+        views: {
+          'tab-expert': {
+            templateUrl: 'templates/enterprise/tab-expert.html',
+            controller: 'ExpertCtrl'
+          }
         }
-      }
-    })
+      })
 
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/enterprise/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+      .state('tab.chats', {
+        url: '/chats',
+        views: {
+          'tab-chats': {
+            templateUrl: 'templates/enterprise/tab-chats.html',
+            controller: 'ChatsCtrl'
+          }
         }
-      }
-    })
-.state('tab.work', {
-      url: '/work',
-      views: {
-        'tab-work': {
-          templateUrl: 'templates/enterprise/tab-work.html',
-          controller: 'WorkCtrl'
+      })
+      .state('tab.chat-detail', {
+        url: '/chats/:chatId',
+        views: {
+          'tab-chats': {
+            templateUrl: 'templates/enterprise/chat-detail.html',
+            controller: 'ChatDetailCtrl'
+          }
         }
-      }
-    })
-.state('tab.work-detail', {
-      url: '/work-detail',
-      views: {
-        'tab-work': {
-          templateUrl: 'templates/enterprise/work-detail.html',
-          controller: 'WorkDetailCtrl'
-        }
-      }
-    })
-.state('tab.work-details', {
-      url: '/work-details',
-      views: {
-        'tab-work': {
-          templateUrl: 'templates/enterprise/work-details.html',
-          controller: 'WorkDetailCtrl'
-        }
-      }
-    })
+      })
 
-.state('tab.msg', {
-      url: '/msg',
-      views: {
-        'tab-msg': {
-          templateUrl: 'templates/enterprise/tab-msg.html',
-          controller: 'MsgCtrl'
+      .state('tab.me', {
+        url: '/me',
+        views: {
+          'tab-me': {
+            templateUrl: 'templates/enterprise/tab-me.html',
+            controller: 'MeCtrl'
+          }
         }
-      }
-    })
-  .state('tab.msg-detail', {
-      url: '/msg/:msgId',
-      views: {
-        'tab-msg': {
-          templateUrl: 'templates/enterprise/msg-detail.html',
-          controller: 'MsgDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/enterprise/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    },
-    data: { // 设置进入角色为 admin 或 teacher
-      authorizedRoles:['admin','teacher']
-    }
-  });
-
-
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+      })
+    ;
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/tab/expert');
 
    $ionicConfigProvider.platform.ios.tabs.style('standard');  
     $ionicConfigProvider.platform.ios.tabs.position('bottom');  
