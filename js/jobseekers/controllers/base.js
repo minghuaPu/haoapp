@@ -27,41 +27,7 @@ angular.module('jobseekers.controllers', [])
     }
   }
 })
-.controller('DashCtrl', function($scope,$ionicModal,$ionicPopover,$state,$ionicViewSwitcher) {
-     $ionicModal.fromTemplateUrl('templates/index_search.html', {
-        scope: $scope,
-         animation: 'animated fadeInRightBig'
-      }).then(function(modal) {
-        $scope.modal = modal;
-      });
 
-      $scope.show_search=function  () {
-        $scope.modal.show();
-      }
-      $scope.down_page=function  () {
-          $state.go('tab.chats');
-          $ionicViewSwitcher.nextDirection("forward");
-      }
-      $scope.popover = $ionicPopover.fromTemplateUrl('my-popover.html', {
-        scope: $scope
-      });
-
-      // .fromTemplateUrl() 方法
-      $ionicPopover.fromTemplateUrl('my-popover.html', {
-        scope: $scope
-      }).then(function(popover) {
-        $scope.popover = popover;
-      });
-
-
-      $scope.openPopover = function($event) {
-        $scope.popover.show($event);
-      };
-      $scope.closePopover = function() {
-        $scope.popover.hide();
-      };
-
-})
 .controller('WorkDetailCtrl',  function($scope,Share){
       $scope.share=function  () {
         Share.show();
@@ -137,7 +103,7 @@ angular.module('jobseekers.controllers', [])
   };
 })
 
-.controller('MsgCtrl', function($scope, Msgs, $ionicModal,Share) {
+.controller('MsgCtrl', function($scope, Msgs, $ionicModal,Share , $ionicViewSwitcher , $state) {
   // 模态窗口
   $scope.contacts = [
     { name: 'Gordon Freeman' },
@@ -186,9 +152,14 @@ angular.module('jobseekers.controllers', [])
     $scope.remove = function(chat) {
       Msgs.remove(chat);
     };
+
+    $scope.onSwipeRight = function(){
+      $state.go('tab.work');
+      $ionicViewSwitcher.nextDirection("back");
+  };
 })
 
-.controller('WorkCtrl', function($scope, $timeout, PersonService) {
+.controller('WorkCtrl', function($scope, $timeout, PersonService , $ionicViewSwitcher , $state) {
   $scope.items = [];
  
   PersonService.GetFeed().then(function(items){
@@ -203,6 +174,15 @@ angular.module('jobseekers.controllers', [])
       //Stop the ion-refresher from spinning
       $scope.$broadcast('scroll.refreshComplete');
     });
+  };
+
+  $scope.onSwipeLeft = function(){
+    $state.go('tab.msg');
+    $ionicViewSwitcher.nextDirection("forward");//注入$ionicViewSwitcher实现页面切换动画效果
+  }
+  $scope.onSwipeRight = function(){
+    $state.go('tab.companys');
+    $ionicViewSwitcher.nextDirection("back");
   };
  
 })

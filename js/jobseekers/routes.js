@@ -46,15 +46,35 @@ angular.module('jobseekers')
     }
   })
 
+  .state('tab.job-detail', {
+   url: '/home/job-detail',
+   views: {
+     'tab-home': {
+       templateUrl: 'templates/jobseekers/job-detail.html',
+       controller: 'JobDetailCtrl'
+     }
+   }
+ })
+
  .state('tab.companys', {
       url: '/companys',
       views: {
         'tab-companys': {
-          templateUrl: 'templates/jobseekers/company/index.html',
+          templateUrl: 'templates/jobseekers/company/companys.html',
           controller: 'CompanysCtrl'
         }
       }
     })
+
+ .state('tab.company-detail', {
+   url: '/companys/company-detail',
+   views: {
+     'tab-companys': {
+       templateUrl: 'templates/jobseekers/company/company-detail.html',
+       controller: 'CompanyDetailCtrl'
+     }
+   }
+ })
 
   .state('tab.chats', {
       url: '/chats',

@@ -1,7 +1,7 @@
 <ion-view view-title="找工作" >
 
-  <ion-content>
-<ion-refresher on-refresh="doRefresh()"></ion-refresher>
+  <ion-content on-swipe-left="onSwipeLeft()" on-swipe-right="onSwipeRight()">
+<ion-refresher on-refresh="doRefresh()" ></ion-refresher>
  
     <ul class="work_box">
     

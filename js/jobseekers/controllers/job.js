@@ -13,7 +13,7 @@ angular.module('jobseekers.controllers')
         $scope.modal.show();
       }
       $scope.down_page=function  () {
-          $state.go('tab.chats');
+          $state.go('tab.companys');
           $ionicViewSwitcher.nextDirection("forward");
       }
       $scope.popover = $ionicPopover.fromTemplateUrl('my-popover.html', {
@@ -35,4 +35,10 @@ angular.module('jobseekers.controllers')
         $scope.popover.hide();
       };
 
-});
+})
+
+.controller('JobDetailCtrl', function($scope, $stateParams, Chats) {
+  $scope.chat = Chats.get($stateParams.chatId);
+  $scope.myActiveSlide = 1;
+
+})
