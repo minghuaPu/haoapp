@@ -1,38 +1,81 @@
 angular.module('jobseekers.controllers')
 
-.controller('CompanysCtrl', function($scope,$ionicModal,$ionicPopover,$state,$ionicViewSwitcher) {
-     $ionicModal.fromTemplateUrl('templates/index_search.html', {
-        scope: $scope,
-         animation: 'animated fadeInRightBig'
-      }).then(function(modal) {
-        $scope.modal = modal;
-      });
+.controller('CompanysCtrl', function($scope, $state , $ionicViewSwitcher , $ionicModal , $ionicPopover) {
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
+  //搜索模态框
+  $ionicModal.fromTemplateUrl('search-modal.html', {
+     scope: $scope,
+     animation: 'slide-in-up'
+   }).then(function(modal) {
+     $scope.modal = modal;
+   });
+   $scope.openModal = function() {
+     $scope.modal.show();
+   };
 
-      $scope.show_search=function  () { 
+   //融资浮动框
+   $scope.financingpopover = $ionicPopover.fromTemplateUrl('financing-popover.html', {
+       scope: $scope
+     });
 
-        $scope.modal.show();
-      }
-      $scope.down_page=function  () {
-          $state.go('tab.chats');
-          $ionicViewSwitcher.nextDirection("forward");
-      }
-      $scope.popover = $ionicPopover.fromTemplateUrl('my-popover.html', {
-        scope: $scope
-      });
+     // .fromTemplateUrl() 方法
+     $ionicPopover.fromTemplateUrl('financing-popover.html', {
+       scope: $scope
+     }).then(function(popover) {
+       $scope.financingpopover = popover;
+     });
+     $scope.financingPopover = function($event) {
+       $scope.financingpopover.show($event);
+     };
 
-      // .fromTemplateUrl() 方法
-      $ionicPopover.fromTemplateUrl('my-popover.html', {
-        scope: $scope
-      }).then(function(popover) {
-        $scope.popover = popover;
-      });
+     //人员规模浮动框
+     $scope.personnelsizepopover = $ionicPopover.fromTemplateUrl('personnelsize-popover.html', {
+         scope: $scope
+       });
 
+       // .fromTemplateUrl() 方法
+       $ionicPopover.fromTemplateUrl('personnelsize-popover.html', {
+         scope: $scope
+       }).then(function(popover) {
+         $scope.personnelsizepopover = popover;
+       });
+       $scope.personnelsizePopover = function($event) {
+         $scope.personnelsizepopover.show($event);
+       };
 
-      $scope.openPopover = function($event) {
-        $scope.popover.show($event);
-      };
-      $scope.closePopover = function() {
-        $scope.popover.hide();
-      };
+       //行业浮动框
+     $scope.industrypopover = $ionicPopover.fromTemplateUrl('industry-popover.html', {
+         scope: $scope
+       });
 
-});
+       // .fromTemplateUrl() 方法
+       $ionicPopover.fromTemplateUrl('industry-popover.html', {
+         scope: $scope
+       }).then(function(popover) {
+         $scope.industrypopover = popover;
+       });
+       $scope.industryPopover = function($event) {
+         $scope.industrypopover.show($event);
+       };
+     //tab页面切换
+  $scope.onSwipeLeft = function(){
+    $state.go('tab.work');
+    $ionicViewSwitcher.nextDirection("forward");//注入$ionicViewSwitcher实现页面切换动画效果
+  }
+  $scope.onSwipeRight = function(){
+    $state.go('tab.home');
+    $ionicViewSwitcher.nextDirection("back");
+  };
+  
+})
+
+.controller('CompanyDetailCtrl', function($scope, $stateParams, Chats) {
+  $scope.chat = Chats.get($stateParams.chatId);
+  $scope.myActiveSlide = 1;
+})

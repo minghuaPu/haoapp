@@ -67,3 +67,366 @@ margin-top: 10px;}
 .content_list .job_detailed .icon{padding-right: 5px;}
 .content_list .job_detailed span{padding-right: 10px;}
 .index_propover{width: 100% !important;left: 0 !important;height: 30%;box-shadow: none;border-top: 1px solid #ccc;margin-top: 7px;background-color: #f9f9f9 }
+
+/*公司列表*/
+.company-content .bar-header{
+  position: relative;
+}
+.company-content .bar-header .title{
+  color:#fff;
+}
+.company-content .bar-header a .icon {
+  position: absolute;
+  top: 10px;
+  right:15px;
+  color:#fff;
+  font-size: 25px;
+}
+a{
+  text-decoration: none;
+}
+.company-content .nav .row .col{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.company-content .nav .row .col a{
+  color:#999;
+  border-right: 1px solid #ccc;
+  padding: 0px 15px;
+  font-size: 12px;
+}
+.company-content .nav .row .col:last-child a{
+  border-right: none;
+}
+.company-content .nav .row .col .icon{
+  color:#ccc;
+  font-size: 12px;
+  padding-left: 5px;
+}
+.company-content .list{
+  background: #EFEFEF;
+}
+.company-content .list .item{
+  margin:10px;
+  padding: 10px 0px 0px 10px;
+}
+/*.company-content .list .item ion-item{
+  padding: 0;
+  margin: 0;
+}*/
+.company-content .list .item .row .col{
+  margin:0;
+  padding: 0;
+}
+.company-content .list .item .row .col .company-logo{
+  background: blue;
+  width: 60px;
+  height: 60px;
+}
+.company-content .list .item .row .col-80 .row{
+  margin-bottom: 15px;
+  color:#888;
+  font-size: 12px;
+}
+.company-content .list .item .row .col-80 .location i{
+  margin:0px 3px;
+} 
+.company-content .list .item .row .col-80 .row:first-child{
+  color:#000;
+  font-size: 18px;
+}
+/*ion-content .list .item .row .col-80 .row .icon{
+  color:#bbb;
+  margin-left: 10px;
+}*/
+.company-content .list .item .row .col-80 .lab span{
+  font-size: 12px;
+}
+.company-content .list .item .row .col-80 .row span{
+  padding:0px 6px;
+}
+.company-content .list .item .row .col-80 .row span+span{
+  border-left: 1px solid #999;
+}
+.company-content .list .item .row .col-80 .row:last-child{
+  position: relative;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  font-size: 11px;
+  margin-bottom: 0px;
+}
+.company-content .list .item .row .col-80 .row:last-child span{
+  color: #86D1C0;
+}
+.company-content .list .item .row .col-80 .row:last-child .icon{
+  position: absolute;
+  right:10px;
+  top:10px;
+   color:#bbb;
+}
+/*************************slidebox测试代码*****************************/
+ .company-detail .slidebox{
+  width:100%;
+  height:150px;
+  position: relative;
+ }
+ .company-detail .slidebox a{
+  position: absolute;
+  display: block;
+  width:30px;
+  height:30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  top:5px;
+  left:8px;
+  background: rgba(0,0,0,.3);
+  cursor: pointer;
+ }
+ .company-detail .slidebox a i{
+  color:#fff;
+  font-size: 18px;
+ }
+ .company-detail .slidebox .slider {
+      height: 100%;
+    }
+  .company-detail .slidebox .slider-slide {
+      color: #000; 
+      background-color: #fff; text-align: center; 
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; }
+  .company-detail .slidebox .blue {
+      background-color: blue;
+    }
+
+  .company-detail .slidebox .yellow {
+      background-color: yellow;
+    }
+
+  .company-detail .slidebox .pink {
+      background-color: pink;
+    }
+  .company-detail .slidebox .box{ 
+      height:100%; 
+    } 
+  .company-detail .slidebox .box h1{
+      position:relative; top:50%; transform:translateY(-50%); 
+    }
+/*************************slidebox测试代码*****************************/
+/*公司详情页*/
+.company-detail .company-box{
+  border-bottom: 1px solid #eee;
+}
+.company-detail .company-box .row .col .company-logo{
+  background: blue;
+  width: 50px;
+  height: 50px;
+}
+.company-detail .company-box .row .col .company-logo img{
+  width:100%;
+}
+.company-detail .company-box .row .col-80 .row:first-child{
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.company-detail .company-box .row .col-80 .row:last-child{
+  padding-bottom: 15px;
+   color:#999;
+}
+.company-detail .company-box .row .col-80 .row span {
+  display: block;
+  width:2px;
+  height:12px;
+  margin:5px 4px;
+  background: #ccc;
+}
+.company-detail .company-nav .row{
+  padding: 5px 20px;
+}
+.company-detail .company-nav .row .col{
+  text-align: center;
+  color:#999;
+  font-size: 16px;
+  padding:10px 0px;
+}
+.company-detail .company-nav .row .selected{
+  color:#555;
+  font-size: 18px;
+  border-bottom: 2px solid #50CCC2;
+}
+.company-detail .job-list{
+  background: #EFEFEF;
+  padding:15px 5px;
+}
+.company-detail .job-list .row{
+  padding: 0;
+  margin: 0;
+  margin-bottom: 15px;
+}
+.company-detail .job-list .row .col{
+  padding: 0 5px;
+  text-align: center;
+}
+.company-detail .job-list .row .col .cur{
+  background: #50CCC2;
+  color:#fff;
+}
+.company-detail .job-list .row .col a{
+  display: block;
+  background: #fff;
+  color:#666;
+  padding:10px 0px;
+}
+.company-detail .job-list .list .item{
+  padding: 10px 5px;
+  margin-bottom: 10px;
+}
+.company-detail .job-list .list .item .row{
+  /*padding: 0;margin: 0;*/
+}
+.company-detail .job-list .list .item .row .jobname{
+  text-align: left;
+  color:#75C7B4;
+}
+.company-detail .job-list .list .item .row .salary{
+  text-align: right;
+  color:#E18080;
+}
+.company-detail .job-list .list .item .row .job-info{
+  font-size: 12px;
+  color:#999;
+}
+.company-detail .job-list .list .item .row .job-info i{
+  margin:0px 3px 0px 6px;
+}
+.company-detail .job-list .list .item .row .image{
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+  background: blue;
+}
+.company-detail .job-list .list .item .row .image img{
+  width:100%;
+}
+.company-detail .job-list .list .item .row .row{
+   padding: 0;
+   margin: 0;
+}
+.company-detail .job-list .list .item .row:last-child{
+  margin: 0;
+}
+.company-detail .job-list .list .item .row .name{
+  line-height: 30px;
+  padding-left: 10px;
+}
+.company-detail .job-list .list .item .row .name span{
+  display: block;
+  width:2px;
+  height: 15px;
+  margin: 9px 5px;
+  background: #777;
+}
+.job-detail{
+  background: #EFEFEF;
+  padding:10px 10px;
+}
+.job-detail .job-item{
+  background: #fff;
+  margin-bottom: 10px;
+}
+.job-detail .job-item .company-name{
+  padding-left: 10px;
+}
+.job-detail .job-item .row .jobname{
+  text-align: left;
+  color:#75C7B4;
+}
+.job-detail .job-item .row .salary{
+  text-align: right;
+  color:#E18080;
+}
+.job-detail .job-item .row .job-info{
+  font-size: 12px;
+  color:#999;
+  margin: 5px 0px;
+}
+.job-detail .job-item .row .job-info i{
+  margin:0px 3px 0px 7px;
+}
+.job-detail .detail{
+  background: #fff;
+  margin-bottom: 10px;
+}
+.job-detail .detail .row{
+  color:#75C7B4;
+  padding:10px 10px;
+  border-bottom: 1px solid #eee;
+}
+.job-detail .detail .dec{
+  color:#555;
+  font-size: 12px;
+  padding:10px 40px 0px 10px;
+}
+.job-detail .detail .dec p{
+  margin:0;
+}
+.job-detail .detail .row:last-child{
+  text-align: center;
+  padding: 0;
+
+}
+.job-detail .detail .row:last-child .col a i{
+  font-size: 20px;
+}
+.job-detail .job-require{
+  background: #fff;
+  margin-bottom: 10px;
+}
+.job-detail .job-require .row{
+   padding:10px 10px;
+}
+.job-detail .job-require .row:first-child{
+  color:#75C7B4;
+  border-bottom: 1px solid #eee;
+}
+.job-detail .job-require .row span{
+  color:#555;
+  margin:0px 5px;
+}
+.job-detail .job-publisher{
+  background: #fff;
+  margin-bottom: 10px;
+}
+.job-detail .job-publisher .row:first-child .col{
+  color:#75C7B4;
+}
+.job-detail .job-publisher .row:first-child .more{
+  font-size: 12px;
+  text-align: right;
+}
+.job-detail .job-publisher .row:first-child .more i{
+  margin:0px 4px;
+}
+.job-detail .job-publisher .row .col .image{
+  width:50px;
+  height:50px;
+  border-radius: 50%;
+  background: blue;
+}
+.job-detail .job-publisher .row .col-80 .row{
+  color:#555;
+}
+.job-detail .job-publisher .row .col-80 .row .col{
+  padding: 0;
+  font-size: 12px;
+  text-align: right;
+  color:#999;
+}
+.button{
+  position: fixed;
+  z-index: 99;
+  bottom:0px;
+  width:100%;
+  background:#75C7B4;
+  color:#fff;
+}
