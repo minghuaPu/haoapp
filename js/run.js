@@ -9,7 +9,6 @@ angular.module('jobseekers', ['ionic','jobseekers.config', 'jobseekers.controlle
 
 .run(function($ionicPlatform,$rootScope,$state,Auth) {
 
-  
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -52,11 +51,16 @@ angular.module('jobseekers', ['ionic','jobseekers.config', 'jobseekers.controlle
   });
 });
 
+<<<<<<< HEAD
 angular.module('enterprise', ['ionic', 'enterprise.controllers', 'enterprise.services'])
+=======
 
-.run(function($ionicPlatform,$rootScope,$state,Auth) {
+angular.module('enterprise', ['ionic','enterprise.config', 'enterprise.controllers', 'enterprise.services'])
+>>>>>>> 4a28c8e9df327e1fc6661320f68ef926cd6651b3
 
- 
+.run(function($ionicPlatform,$rootScope,$state,Auth,$rootScope,ENV) {
+  // console.log(ENV);
+ $rootScope.env=ENV;
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

@@ -1,39 +1,60 @@
-<ion-view title="登录">
+<!--<ion-nav-bar class="bar-stable">-->
+
+<!--<ion-nav-view>-->
+<ion-view title="职信道">
+
   <ion-content>
-    <div class="list">
-        <form action="/" name="myForm">
-      <label class="item item-input">
-          <span class="input-label">用户名</span>
-          <input    ng-focus="hide_msg();" type="text" ng-model="user.user_name" name="user"  required>
-
-
-        </label>
-        <label class="item item-input">
-          <span class="input-label">密  码</span>
-          <input ng-focus="hide_msg();" type="password" ng-minlength="6" ng-maxlength="12" ng-model="user.user_pwd" name="password" required>
-            
-          </label>
-
+    <div class="row">
+      <div class="col col-50 col-offset-25 photo-parent" >
+        <img src="../img/ben.png" alt=".." class="photo">
       </div>
-      <div class="padding">
+    </div>
 
-          <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
-            <span ng-show="myForm.user.$error.required">用户名是必须的。</span>
+    <div class="list list-inset">
+
+      <form action="/" name="myForm" novalidate>
+
+        <label class="item item-input user">
+          <i class="icon ion-person"></i>
+          <input type="text" placeholder="Username" ng-model="user.user_name" name="user" required>
+
+          <span style="color:#66cc33" class="ion-checkmark-round"
+                ng-show="myForm.user.$dirty && myForm.user.$valid"></span>
+          <span style="color:red" class="ion-close-round" ng-show="myForm.user.$dirty && myForm.user.$invalid">
           </span>
-         <span style="color:red"> {{ success }} </span>
-        <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+        </label>
+
+        <label class="item item-input password">
+          <i class="icon ion-locked"></i>
+          <input type="password" placeholder="Password" ng-minlength="6" ng-maxlength="18" ng-model="user.user_pwd" name="password" required>
+
+          <span style="color:#66cc33" class="ion-checkmark-round"
+                ng-show="myForm.password.$dirty && myForm.password.$valid"></span>
+          <span style="color:red" class="ion-close-round" ng-show="myForm.password.$dirty && myForm.password.$invalid"></span>
+        </label>
+
+        <div class="padding">
+          <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+            <span ng-show="myForm.user.$error.required">用户名是必须的</span>
+          </span>
+          <span style="color:red"> {{ success }} </span>
+          <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
               <span ng-show="myForm.password.$error.required">密码是必须的。</span>
               <span ng-show="myForm.password.$error.minlength">密码不能小于6位！</span>
-              <span ng-show="myForm.password.$error.maxlength">密码不能大于12位！</span>
-            </span>
-        <button class="button button-block button-positive" ng-disabled="  myForm.user.$invalid ||
- myForm.password.$invalid" ng-click="signIn(user)">立即登录</button>
-  
-        <p class="text-center">
-          <a href="#/forgot-password">找回密码</a>
-        </p>
-      </div>
-   
-           </form>
+              <span ng-show="myForm.password.$error.maxlength">密码不能大于18位！</span>
+          </span>
+          <button class="button button-full button-calm" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+  myForm.password.$dirty && myForm.password.$invalid" ng-click="signIn(user)">登陆</button>
+
+          <p class="text-center">
+            <a href="#/forgot-password">找回密码</a>
+          </p>
+        </div>
+
+      </form>
+
+    </div>
   </ion-content>
 </ion-view>
+</ion-nav-view>
+</ion-nav-bar>
