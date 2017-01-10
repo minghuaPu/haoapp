@@ -51,12 +51,9 @@ angular.module('jobseekers', ['ionic','jobseekers.config', 'jobseekers.controlle
   });
 });
 
-<<<<<<< HEAD
-angular.module('enterprise', ['ionic', 'enterprise.controllers', 'enterprise.services'])
-=======
+
 
 angular.module('enterprise', ['ionic','enterprise.config', 'enterprise.controllers', 'enterprise.services'])
->>>>>>> 4a28c8e9df327e1fc6661320f68ef926cd6651b3
 
 .run(function($ionicPlatform,$rootScope,$state,Auth,$rootScope,ENV) {
   // console.log(ENV);
