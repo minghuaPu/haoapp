@@ -326,6 +326,7 @@ a{
   margin: 9px 5px;
   background: #777;
 }
+/*--------------------------职位详情------------------------*/
 .job-detail{
   background: #EFEFEF;
   padding:10px 10px;
@@ -368,6 +369,7 @@ a{
   padding:10px 40px 0px 10px;
 }
 .job-detail .detail .dec p{
+  color:#555;
   margin:0;
 }
 .job-detail .detail .row:last-child{
@@ -422,11 +424,9 @@ a{
   text-align: right;
   color:#999;
 }
-.button{
-  position: fixed;
-  z-index: 99;
-  bottom:0px;
+.job-detail .bt-chat{
   width:100%;
   background:#75C7B4;
   color:#fff;
+  margin-bottom: 10px;
 }

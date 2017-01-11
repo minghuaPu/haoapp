@@ -1,6 +1,6 @@
 angular.module('jobseekers.controllers')
 
-.controller('CompanysCtrl', function($scope, $state , $ionicViewSwitcher , $ionicModal , $ionicPopover) {
+.controller('CompanysCtrl', function($scope, $state , PersonService,$ionicViewSwitcher , $ionicModal , $ionicPopover) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -9,6 +9,24 @@ angular.module('jobseekers.controllers')
   //$scope.$on('$ionicView.enter', function(e) {
   //});
   //搜索模态框
+
+  //////////////////////////下拉刷新/////////////////////
+  $scope.items = [];
+ 
+  PersonService.GetFeed().then(function(items){
+    $scope.items = items;
+    console.log($scope.items);
+  });
+ 
+  $scope.doRefresh = function() {
+    PersonService.GetFeed().then(function(items){
+      $scope.items = items.concat($scope.items);
+ 
+      //Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  };
+
   $ionicModal.fromTemplateUrl('search-modal.html', {
      scope: $scope,
      animation: 'slide-in-up'
