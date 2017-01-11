@@ -39,10 +39,14 @@
         </div>
       </div> 
     </header>
+
+    <ion-refresher on-refresh="doRefresh()"  ng-if="moreDataCanBeLoaded()"  pulling-text="下拉刷新"   refreshing-text="刷新成功"   ></ion-refresher>
+
     <ion-list class="content_list">
-      <ion-item href="#/tab/home/job-detail">
+
+      <ion-item href="#/tab/home/job-detail" ng-repeat="item in job_lists">
         <div class="row">
-          <div class="col col-75 job_name">HTML5前端工程师</div>
+          <div class="col col-75 job_name">{{ item.job_name }}</div>
           <div class="col job_money">8k-19k</div>
         </div>
         <div class="row">中杰科技 未融资</div>
@@ -62,52 +66,11 @@
         </div>
         <div class="row job_boss">   lily 产品总监</div>
       </ion-item>
-      <ion-item >
-        <div class="row">
-          <div class="col col-75 job_name">PHP前端工程师</div>
-          <div class="col job_money">8k-19k</div>
-        </div>
-        <div class="row">中杰科技 未融资</div>
-        <div class="row job_detailed">
-          <span>
-            <i class="icon ion-location"></i>
-            广州
-          </span>
-          <span>
-            <i class="icon ion-briefcase"></i>
-            3-5年
-          </span>
-          <span>
-            <i class="icon ion-university"></i>
-            不限
-          </span>
-        </div>
-        <div class="row job_boss">lily 产品总监</div>
-      </ion-item>
-      <ion-item >
-        <div class="row">
-          <div class="col col-75 job_name">HT前端工程师</div>
-          <div class="col job_money">8k-19k</div>
-        </div>
-        <div class="row">中杰科技 未融资</div>
-        <div class="row job_detailed">
-          <span>
-            <i class="icon ion-location"></i>
-            广州
-          </span>
-          <span>
-            <i class="icon ion-briefcase"></i>
-            3-5年
-          </span>
-          <span>
-            <i class="icon ion-university"></i>
-            不限
-          </span>
-        </div>
-        <div class="row job_boss">lily 产品总监</div>
-      </ion-item>
+      
     </ion-list>
 
+<!-- ion-infinite-scroll ng-if="moreDataCanBeLoaded()" 上拉加载数据指令 distance默认1% nf-if的值为false时，就禁止执行on-infinite  -->
+   <ion-infinite-scroll distance="1%" ng-if="moreDataCanBeLoaded()"  on-infinite="loadMore()" ></ion-infinite-scroll>
 
      <!-- 模态框 -->
     <script id="templates/index_search.html" type="text/ng-template">
