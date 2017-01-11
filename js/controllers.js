@@ -1,10 +1,11 @@
-angular.module('enterprise.controllers', [])
+angular.module('starter.controllers', [])
 
 .controller('ExpertCtrl', function($scope, $ionicModal, $ionicPopover, $state, $ionicViewSwitcher) {
   // 发布职位
   //模态框
   $ionicModal.fromTemplateUrl('publish_job.html', {
-    scope: $scope
+    scope: $scope,
+    animation: 'animated slideInRight'
   }).then(function (modal) {
     $scope.modal = modal;
   });
@@ -16,7 +17,6 @@ angular.module('enterprise.controllers', [])
   $scope.closeModal = function () {
     $scope.popover.hide();
     $scope.modal.hide();
-
   };
   // 浮动框
   $ionicPopover.fromTemplateUrl('my-popover.html', {
@@ -38,7 +38,6 @@ angular.module('enterprise.controllers', [])
     $state.go('tab.chats');
     $ionicViewSwitcher.nextDirection('forwards');
   }
-
 })
 
 .controller('ChatsCtrl', function($scope, Chats, $state, $ionicViewSwitcher) {
@@ -86,6 +85,7 @@ angular.module('enterprise.controllers', [])
     $ionicViewSwitcher.nextDirection('back');
   }
 })
+
 ;
 
 

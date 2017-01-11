@@ -351,9 +351,9 @@
   color: #333;
 }
 /*.settings .list-banner a.item .details>span.record-num {*/
-/*position: relative;*/
-/*font-size: 10px;*/
-/*left: 10px;*/
+  /*position: relative;*/
+  /*font-size: 10px;*/
+  /*left: 10px;*/
 /*}*/
 .settings .list-banner a.item .details >i.ion-record {
   font-size: 16px;
