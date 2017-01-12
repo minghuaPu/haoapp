@@ -327,6 +327,7 @@ button.fabu {
 .jobName {
   position: relative;
   text-align: center;
+  top:44px;
 }
 .jobName p:nth-child(2) {
   position: absolute;
