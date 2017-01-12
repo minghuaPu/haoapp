@@ -142,18 +142,29 @@ angular.module('jobseekers')
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.ucenter', {
+    url: '/ucenter',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/jobseekers/tab-account.html',
+      'tab-ucenter': {
+        templateUrl: 'templates/jobseekers/ucenter/me.html',
         controller: 'AccountCtrl'
       }
     },
     data: { // 设置进入角色为 admin 或 teacher
       authorizedRoles:['admin','teacher']
     }
-  });
+  })
+
+  .state('tab.ucenter-resume', {
+    url: '/resume',
+    views: {
+      'tab-ucenter': {
+        templateUrl: 'templates/jobseekers/ucenter/resume.html',
+        controller: 'resumeBasic'
+      }
+    }
+  })
+  ;
 
 
 
