@@ -1,10 +1,7 @@
 angular.module('jobseekers.controllers')
 
-<<<<<<< HEAD
 .controller('DashCtrl', function($scope,$ionicModal,$ionicPopover,$state,$ionicViewSwitcher,Jobs) {
-=======
-.controller('DashCtrl', function($scope,$ionicModal,PersonService,$ionicPopover,$state,$ionicViewSwitcher) {
->>>>>>> 48467cbe036f3da910b4627b6e2fa8f62a839c6d
+ 
      $ionicModal.fromTemplateUrl('templates/index_search.html', {
         scope: $scope,
          animation: 'animated fadeInRightBig'

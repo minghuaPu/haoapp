@@ -183,4 +183,40 @@ angular.module('jobseekers.services', [])
     }
   };
 })
+
+.factory('Company' , function( $http,ENV) {
+  
+  var page=0;
+  var hasmore = false;//标识有没有更多数据
+  return {
+    
+    GetFeed: function() {
+      page++;
+       return $http({
+              method:"jsonp",
+              url:ENV.api+"/public/job?callback=JSON_CALLBACK",
+              params:{'p':page}
+              }).then(function(data){ 
+                 
+                  if (data) {
+                       return data;
+                  } 
+             });
+    },
+    getDetail:function  (id) {
+       return $http({
+              method:"jsonp",
+              url:ENV.api+"/public/company/"+id+"?callback=JSON_CALLBACK",
+              }).then(function(data){ 
+                 
+                  if (data) {
+                       return data;
+                  } 
+             });
+    }
+
+  };
+})
+
+ 
 ;

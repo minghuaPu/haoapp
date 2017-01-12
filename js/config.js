@@ -11,7 +11,7 @@ angular.module("jobseekers.config", [])
 ;
 
 
-angular.module("jobseekers.config", [])
+angular.module("enterprise.config", [])
     .constant("ENV", {
         // "name": "production",
         "accessToken": '',
