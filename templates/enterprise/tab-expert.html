@@ -6,7 +6,7 @@
         <img src="{{env.ent_img_path}}/expert_man.png" />
         <img src="{{env.ent_img_path}}/expert_girl.png" />
       </div>
-      <p class="tips">一大波牛人正期待您发布职位<br>发布职位后 会为您推荐最合适的牛人</p>
+      <p class="tips">一大波牛人正期待您发布职位<br />发布职位后 会为您推荐最合适的牛人</p>
       <button class="button button-defined" ng-click="publish_job()">
         发布职位
       </button>
@@ -15,7 +15,7 @@
     <!--发布职位页面-->
     <script id="publish_job.html" type="text/ng-template">
       <ion-modal-view>
-        <ion-content>
+        <ion-content style="background: #e7eff0;">
 
           <div class="publish_head">
             <div class="row">
@@ -25,7 +25,7 @@
               <div class="col col-80">
                 <h5 class="title">发布职位</h5>
               </div>
-              <div class="col col-10">
+              <div class="col col-10" ng-click="publish_info()">
                 <h6>发布</h6>
               </div>
             </div>
@@ -33,7 +33,7 @@
 
           <div class="publish_content">
 
-            <div class="publish_pc">
+            <div class="publish_pc" ng-click="fabu_pc()">
               <p>
                 <span>在电脑上发布职位</span>
                 <i class="icon ion-ios-arrow-right"></i>
@@ -43,7 +43,7 @@
             <div class="blank-line"></div>
             <div class="list list-defined">
 
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="comp_Info()">
                 <span class="item-info">
                   公司信息
                 </span>
@@ -52,18 +52,19 @@
 
               <div class="blank-line"></div>
 
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="job_Type()">
                 <span class="item-jobType">
                   职位类型
                 </span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
 
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="job_Name()">
                 <span class="item-jobName">
                   职位名称
                 </span>
                 <i class="icon ion-ios-arrow-right"></i>
+                <span class="item-details">fe{{ job_info.job_name }}</span>
               </a>
               <a href="#" class="item item-icon-right">
                 <span class="item-skillRequire">
@@ -83,12 +84,14 @@
                 <span class="item-exeRequire">
                   经验要求
                 </span>
+                <span class="item-details">不限</span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
               <a href="#" class="item item-icon-right">
                 <span class="item-quaRequire">
                   学历要求
                 </span>
+                <span class="item-details">本科</span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
 
@@ -97,6 +100,7 @@
                 <span class="item-workCity">
                   工作城市
                 </span>
+                <span class="item-details">北京</span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
               <a href="#" class="item item-icon-right">
@@ -117,6 +121,12 @@
               <i class="icon ion-android-alert"></i>
               <span>所有职位均有专人审核，禁止发布手机兼职，淘宝兼职等职位！</span>
             </div>
+            <div class="fabu-box">
+              <button class="button fabu" ng-click="publish_info()">
+                发布
+              </button>
+            </div>
+
           </div>
         </ion-content>
       </ion-modal-view>
@@ -140,6 +150,127 @@
         </ion-content>
       </ion-popover-view>
 
+    </script>
+
+    <!--在电脑上发布职位 模态框-->
+    <script id="fabu_pc.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="fabu-bar">
+          <i class="icon ion-ios-arrow-left" ng-click="closeFaBuPc()"></i>
+          <h1 class="title">XX网页版</h1>
+          <i class="icon ion-ios-help-empty"></i>
+        </ion-header-bar>
+        <ion-content>
+          <div class="fabupc">
+            <img src="{{ env.ent_img_path }}/fabupc.png" />
+            <!--{{env.ent_img_path}}/fabupc.png-->
+            <p>第一步:用电脑浏览器打开网址:<br/>sao.XX.com</p>
+
+          </div>
+        </ion-content>
+          <div class="fabu-footer fabu-box">
+            <p>
+              <i class="icon ion-ios-checkmark-outline"></i>
+              <span>以后不再提醒</span>
+            </p>
+            <button class="button fabu">已打开网址,点击开始扫码</button>
+          </div>
+
+      </ion-modal-view>
+    </script>
+
+    <!--公司信息 模态框-->
+    <script id="comp_info.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="fabu-bar">
+          <i class="icon ion-ios-arrow-left" ng-click="closeCompInfo()"></i>
+          <h1 class="title">公司信息</h1>
+          <!--<i class="icon ion-ios-help-empty"></i>-->
+        </ion-header-bar>
+        <ion-content style="background: #e7eff0;">
+          <div class="compInfo">
+            <p>若要修改,请到 【我的-个人信息】 页面</p>
+            <div class="list list-defined">
+
+              <a href="#" class="item item-icon-right">
+                <span class="item-info">
+                  所属行业
+                </span>
+                <span>移动互联网</span>
+              </a>
+              <div class="blank-line"></div>
+
+              <a href="#" class="item item-icon-right">
+                <span class="item-info">
+                  公司简称
+                </span>
+                <span>源酷信息科技有限公司</span>
+              </a>
+              <a href="#" class="item item-icon-right">
+                <span class="item-info">
+                  人员规模
+                </span>
+                <span>100-300人</span>
+              </a>
+            </div>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+    <!--职位类型 模态框-->
+    <script id="jobType.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="fabu-bar">
+          <i class="icon ion-ios-arrow-left" ng-click="closeJobType()"></i>
+          <h1 class="title">职位类型</h1>
+          <!--<i class="icon ion-ios-help-empty"></i>-->
+        </ion-header-bar>
+        <ion-content style="background: #e7eff0;">
+          <div class="jobType compInfo">
+            <div class="input-box">
+              <label for="searchType">
+                <i class="icon ion-ios-search"></i>
+                <input type="text" id="searchType" placeholder="搜索">
+                <span><i class="icon ion-ios-close-empty"></i></span>
+              </label>
+            </div>
+
+            <div class="list list-defined">
+              <a href="#" class="item">
+                <span class="item-info">
+                  技术
+                </span>
+              </a>
+              <a href="#" class="item">
+                <span class="item-info">
+                  设计
+                </span>
+              </a>
+            </div>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+    <!--职位名称 模态框-->
+    <script id="jobName.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="fabu-bar">
+          <i class="icon ion-ios-arrow-left" ng-click="closeJobName()"></i>
+          <h1 class="title">职位名称</h1>
+          <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveJobName(job_name)"></i>
+        </ion-header-bar>
+        <ion-content style="background: #e7eff0;">
+          <div class="jobName">
+            <div class="blank-line" style="height: 28px;"></div>
+            <p><span>0</span>/20</p>
+            <label for="jobName"></label>
+            <input type="text" id="jobName" ng-model="job_name" value="{{job_info.job_name}}">
+            <p class="warning">不能填写QQ、微信、电话等联系方式,以及特殊符号</p>
+          </div>
+        </ion-content>
+      </ion-modal-view>
     </script>
   </ion-content>
 </ion-view>

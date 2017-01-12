@@ -91,6 +91,7 @@
   color: #fff;
   position: relative;
   top: -3px;
+  word-wrap: break-word;
 }
 
 .publish_pc {
@@ -116,7 +117,7 @@
   height: 10px;
 }
 .publish_content .list-defined .item {
-  height: 45px;
+  height: 43px;
 }
 .publish_content .list-defined .item span {
   color: #454545;
@@ -127,6 +128,7 @@
 .publish_content .list-defined .item .icon {
   font-size:18px;
   color:#52cac1;
+  right: 0;
 }
 .publish_content .publish_warning {
   font-size: 12px;
@@ -137,7 +139,24 @@
 .publish_content .publish_warning .icon {
   font-size: 18px;
 }
-
+.publish_content .list-defined>.item>span.item-details {
+  position: absolute;
+  right: 24px;
+  top:10px;
+}
+.fabu-box {
+  text-align: center;
+}
+button.fabu {
+  background-color: #52cac1;
+  width:90%;
+  color: #fff;
+  display:inline-block;
+  min-height: 40px !important;
+  line-height: 5px !important;
+  font-size: 14px;
+  margin-top:10px;
+}
 /*浮动框*/
 .myPopover {
   width: 290px;
@@ -187,6 +206,145 @@
 }
 .pop-tips button.button2 {
   background-color: #adddf3;
+}
+/*---在电脑上发布职位---*/
+.bar{
+  background-color: #5ED2CB !important;
+  border: none !important;
+}
+.fabu-bar > .icon {
+  font-size: 24px;
+  color: #fff;
+}
+.fabu-bar > .icon:nth-child(1) {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.fabu-bar > .icon:nth-child(3) {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-size: 30px;
+}
+.fabupc {
+  text-align: center;
+  margin-top:40px;
+}
+.fabupc > img {
+  display:inline-block;
+  width: 178px;
+}
+.fabupc >p {
+  margin-top:30px;
+  color: #888;
+  font-size:13px;
+}
+.fabu-footer {
+  margin-top:420px;
+  text-align: center;
+}
+.fabu-footer > p  {
+  font-size:12px;
+  color: #777;
+}
+.fabu-footer > p > .icon {
+  font-size: 14px;
+}
+
+/*----公司信息----*/
+.compInfo {
+  background-color: #e7eff0;
+}
+.compInfo >p {
+  text-align: center;
+  color: #ceb26e;
+  line-height: 40px;
+  background-color: #fef1ba;
+}
+.compInfo > .list-defined > .item {
+  height: 42px;
+  position: relative;
+}
+.compInfo > .list-defined > .item>.item-info {
+  font-size:13px;
+  position: relative;
+  top:-7px;
+  color: #444;
+}
+.compInfo > .list-defined > .item>span:nth-child(2) {
+  font-size:13px;
+  color: #777;
+  position: absolute;
+  top: 9px;
+  right: 10px;
+}
+
+/*-----职位类型-----*/
+.jobType .input-box {
+  text-align: center;
+  height: 37px;
+
+}
+.jobType .input-box>label>.icon:nth-child(1) {
+  position: absolute;
+  top:2px;
+  left: 7px;
+}
+.jobType .input-box>label>span {
+  position: absolute;
+  top:4px;
+  right: 10px;
+  font-size: 18px;
+  width:16px;
+  height: 16px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #777;
+}
+.jobType .input-box>label>span>.icon {
+  color: #fff;
+  position: relative;
+  top:-4.9px;
+}
+.jobType label {
+  position: relative;
+  top:5px;
+}
+.jobType  #searchType {
+  background-color: #dcdcdc;
+  display: inline-block !important;
+  width: 95%;
+  height: 26px;
+  border-radius: 5px;
+  text-align: left;
+  text-indent: 24px;
+  color: #333333;
+  font-size: 13px;;
+}
+
+/*------职位名称-----*/
+.jobName {
+  position: relative;
+  text-align: center;
+}
+.jobName p:nth-child(2) {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #5ED2CB;
+}
+.jobName > .warning{
+  color: #777;
+  padding:8px 10px;
+  font-size:13px;
+  text-align: left;
+}
+.jobName > #jobName{
+  width: 98%;
+  display:inline-block;
+  text-indent: 10px;
+  color: #777;
 }
 /*--------发布职位----------*/
 
@@ -350,11 +508,6 @@
   font-size: 16px;
   color: #333;
 }
-/*.settings .list-banner a.item .details>span.record-num {*/
-/*position: relative;*/
-/*font-size: 10px;*/
-/*left: 10px;*/
-/*}*/
 .settings .list-banner a.item .details >i.ion-record {
   font-size: 16px;
   color: #f02c1b;
@@ -384,10 +537,14 @@
   line-height:44px;
   color: #fff;
   text-align: center;
+  position: relative;
 }
 .settings_head > .icon {
   font-size: 20px;
   cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 15px;
 }
 
 /*-------settings.html-----*/

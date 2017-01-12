@@ -23,17 +23,17 @@ angular.module('jobseekers', ['ionic','jobseekers.config', 'jobseekers.controlle
     }
 
     $rootScope.$on('$stateChangeStart', function(event, next) {
-         
+
         if (angular.isDefined(next.data)) {
             var roles = next.data.authorizedRoles;
             if (!Auth.isAuthenticated()) {
                 console.log('还未登录');
-                event.preventDefault(); 
+                event.preventDefault();
                 $state.go('login');
 
             } else if (Auth.isAuthorized(roles)) {
                 console.log('用户角色在列表中');
-            } 
+            }
 
             // else {
             //     console.log('用户角色没有在列表中')
@@ -41,20 +41,21 @@ angular.module('jobseekers', ['ionic','jobseekers.config', 'jobseekers.controlle
             //     $state.go('login');
             // }
         }
-    })
+    });
 
     $rootScope.logout = function(){
       Auth.logout();
     };
-    
+
 
   });
 });
 
 
+
 angular.module('enterprise', ['ionic','enterprise.config', 'enterprise.controllers', 'enterprise.services'])
 
-.run(function($ionicPlatform,$rootScope,$state,Auth,$rootScope,ENV) {
+.run(function($ionicPlatform,$rootScope,$state,Auth,ENV) {
   // console.log(ENV);
  $rootScope.env=ENV;
   $ionicPlatform.ready(function() {
@@ -71,17 +72,17 @@ angular.module('enterprise', ['ionic','enterprise.config', 'enterprise.controlle
     }
 
     $rootScope.$on('$stateChangeStart', function(event, next) {
-         
+
         if (angular.isDefined(next.data)) {
             var roles = next.data.authorizedRoles;
             if (!Auth.isAuthenticated()) {
                 console.log('还未登录');
-                event.preventDefault(); 
+                event.preventDefault();
                 $state.go('login');
 
             } else if (Auth.isAuthorized(roles)) {
                 console.log('用户角色在列表中');
-            } 
+            }
 
             // else {
             //     console.log('用户角色没有在列表中')
@@ -89,12 +90,12 @@ angular.module('enterprise', ['ionic','enterprise.config', 'enterprise.controlle
             //     $state.go('login');
             // }
         }
-    })
+    });
 
     $rootScope.logout = function(){
       Auth.logout();
     };
-    
+
 
   });
 });
