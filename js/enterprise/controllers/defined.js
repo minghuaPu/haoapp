@@ -1,7 +1,7 @@
 angular.module('enterprise.controllers', [])
 
 .controller('ExpertCtrl', function($scope, $ionicModal, $ionicPopover, $state, $ionicViewSwitcher,$http,$window,ENV) {
-  // 发布职位
+  // // 发布职位
   //模态框
   $ionicModal.fromTemplateUrl('publish_job.html', {
     scope: $scope
@@ -24,28 +24,28 @@ angular.module('enterprise.controllers', [])
 
   $scope.job_info=JSON.parse(localStorage.getItem("job_info") || '[]');
 
-  //职位名称模态框
-  $ionicModal.fromTemplateUrl('jobname_model.html', {
-    scope: $scope
-  }).then(function (modal) {
-    $scope.jobname_modal = modal;
-  });
-   // 显示发布职位的页面
-  $scope.show_jobname_model = function () {
-    $scope.jobname_modal.show();
-  };
-    // 隐藏发布职位的页面
-  $scope.hidePopover = function () {
-    $scope.popover.hide();
-    $scope.jobname_modal.hide();
+  // //职位名称模态框
+  // $ionicModal.fromTemplateUrl('jobName.html', {
+  //   scope: $scope
+  // }).then(function (modal) {
+  //   $scope.jobname_modal = modal;
+  // });
+  //  // 显示发布职位的页面
+  // $scope.show_jobname_model = function () {
+  //   $scope.jobname_modal.show();
+  // };
+  //   // 隐藏发布职位的页面
+  // $scope.hidePopover = function () {
+  //   $scope.popover.hide();
+  //   $scope.jobname_modal.hide();
 
-  };
-  $scope.saveJobname = function (job_name) {
+  // };
+  // $scope.saveJobname = function (job_name) {
 
-    localStorage.setItem('job_info', JSON.stringify({'job_name':job_name}));
-    $scope.job_info.job_name=job_name;
-     $scope.jobname_modal.hide();
-  };
+  //   localStorage.setItem('job_info', JSON.stringify({'job_name':job_name}));
+  //   $scope.job_info.job_name=job_name;
+  //    $scope.jobname_modal.hide();
+  // };
 
   // 发表职位
   

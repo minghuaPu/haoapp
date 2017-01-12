@@ -98,7 +98,47 @@ angular.module('enterprise', ['ionic','enterprise.config', 'enterprise.controlle
 
 
   });
-});
+})
+
+//   .directive('modalBox', [function() {
+//     return {
+//         restrict: 'E',
+//         transclude: true,
+//          scope : {
+//             htmlName : '=name'
+//         },
+//         templateUrl:'publish_job.html',
+//         replace:true,
+//         controller: function($scope, $ionicModal, $ionicPopover,$attrs){
+//             // 发布职位
+//             //模态框
+           
+//             $ionicModal.fromTemplateUrl('publish_job.html', {
+//               scope: $scope
+//             }).then(function (modal) {
+//               $scope.modal = modal;
+//             });
+
+            
+//             // 显示发布职位的页面
+//             $scope.publish_job = function () {
+//               $scope.modal.show();
+//                console.log($scope.htmlName);
+//             };
+//             // 隐藏发布职位的页面
+//             $scope.closeJobName = function () {
+//               $scope.popover.hide();
+//               $scope.modal.hide();
+
+//             }; 
+//         },
+//         link: function(scope, element, attrs) {
+//          // scope.info=attrs;
+//             // scope.items = JSON.parse(attrs.items);
+//         }
+//     }
+// }])
+;
 
 
 
