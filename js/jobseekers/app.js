@@ -3,8 +3,8 @@ angular.module('jobseekers', ['ionic', 'jobseekers.config', 'jobseekers.controll
 		$stateProvider
 		//首页
 			.state('index', {
-				url: '/',
-				templateUrl: 'templates/jobseekers/tabs.html'
+				url: '/home',
+				templateUrl: 'templates/jobseekers/home.html'
 			})
 			//我的
 			.state('me', {
