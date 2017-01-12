@@ -52,7 +52,7 @@ angular.module('jobseekers.services', [])
 
 .service('Session', function() {
     this.create = function(user) {
-     
+
         this.user = user;
         this.userRole = user.userRole;
     };
@@ -77,7 +77,7 @@ angular.module('jobseekers.services', [])
       Session.destroy();
       $window.sessionStorage.removeItem("userInfo");
         $state.go('login');
-    }
+    };
 
     return authService;
 }])
@@ -161,25 +161,23 @@ angular.module('jobseekers.services', [])
   };
 })
 
-.factory('Jobs', function( $http,ENV) {
-  
+.factory('Jobs',function($http,ENV){
   var page=0;
-  var hasmore = false;//标识有没有更多数据
-  return {
-
-    
-    GetFeed: function() {
+  var hasmore=false;//标识有没有更多数据
+  return{
+    GetFeed:function () {
       page++;
-       return $http({
-              method:"jsonp",
-              url:ENV.api+"/public/job?callback=JSON_CALLBACK",
-              params:{'p':page}
-              }).then(function(data){ 
-                 
-                  if (data) {
-                       return data;
-                  } 
-             });
+      return $http({
+        method:"jsonp",
+        // http://localhost/thinkphp_5.0.2_full/public/job?callback=JSON_CALLBACK
+        url:ENV.api+"/public/job?callback=JSON_CALLBACK",
+        // js:callback=?
+        params:{'p':page}
+      }).then(function (data) {
+        if(data){
+          return data;
+        }
+      });
     }
   };
 })
