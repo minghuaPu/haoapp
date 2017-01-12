@@ -5,7 +5,26 @@
 		enterprise：企业端
 
 		jobseekers：求职者
+			company :公司相关页面
+			ucenter：用户个人中心
+			menu.html:底部菜单
 
+	业务模型和控制器层 js文件夹
+		
+		enterprise：企业端
+
+		jobseekers：求职者
+			controllers ：所有的控制器
+					base.js：父类控制器
+					company.js：企业相关操作
+					job.js：职位的
+					resume.js：简历的
+
+			service：所有的服务
+				base.js：父类服务
+
+			routes.js ：求职者栏目相关的路由
+			
 
 	控制器、模型、服务：js
 
