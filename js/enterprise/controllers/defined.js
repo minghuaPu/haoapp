@@ -95,15 +95,14 @@ angular.module('enterprise.controllers', [])
   $scope.saveJobName = function (job_name) {
     localStorage.setItem('job_info', JSON.stringify({'job_name':job_name}));
     console.log(localStorage);
-    console.log(job_name);
+    // console.log(job_name);
     $scope.job_info.job_name=job_name;
-    console.log($scope.job_info.job_name+"21");
     $scope.jobName.hide();
   };
 
   // 发布职位
   $scope.publish_info = function () {
-    console.log("publish_info"+$window.sessionStorage["userInfo"]);
+    console.log("publish_info: "+$window.sessionStorage["userInfo"]);
     $http({
       'method': 'jsonp',
       // create:先要登录验证密码
@@ -111,7 +110,8 @@ angular.module('enterprise.controllers', [])
       'params': $scope.job_info
     }).then(function (rtn_data) {
       console.log(rtn_data);
-    })
+    });
+    $scope.modal.hide();
   }
 })
 

@@ -64,7 +64,7 @@
                   职位名称
                 </span>
                 <i class="icon ion-ios-arrow-right"></i>
-                <span class="item-details">fe{{ job_info.job_name }}</span>
+                <span class="item-details">{{ job_info.job_name }}</span>
               </a>
               <a href="#" class="item item-icon-right">
                 <span class="item-skillRequire">
@@ -256,18 +256,24 @@
     <!--职位名称 模态框-->
     <script id="jobName.html" type="text/ng-template">
       <ion-modal-view>
-        <ion-header-bar class="fabu-bar">
-          <i class="icon ion-ios-arrow-left" ng-click="closeJobName()"></i>
-          <h1 class="title">职位名称</h1>
-          <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveJobName(job_name)"></i>
-        </ion-header-bar>
+        <!--</ion-header-bar >-->
+          <!--<i class="icon ion-ios-arrow-left" ng-click="closeJobName()"></i>-->
+          <!--<h1 class="title">职位名称</h1>-->
+          <!--<i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ></i>-->
+        <!--</ion-header-bar>-->
         <ion-content style="background: #e7eff0;">
+          <div class="fabu-bar bar">
+            <i class="icon ion-ios-arrow-left" ng-click="closeJobName()" style="z-index: 100"></i>
+            <h1 class="title">职位名称</h1>
+            <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveJobName(job_name)"></i>
+          </div>
           <div class="jobName">
             <div class="blank-line" style="height: 28px;"></div>
             <p><span>0</span>/20</p>
             <label for="jobName"></label>
-            <input type="text" id="jobName" ng-model="job_name" value="{{job_info.job_name}}">
-            <p class="warning">不能填写QQ、微信、电话等联系方式,以及特殊符号</p>
+            <!--job_info.job_name 点 从localStorage出来的刷新才不消失-->
+            <input type="text" id="jobName" ng-model="job_name" value="{{ job_info.job_name }}">
+            <p class="warning" >不能填写QQ、微信、电话等联系方式,以及特殊符号</p>
           </div>
         </ion-content>
       </ion-modal-view>
