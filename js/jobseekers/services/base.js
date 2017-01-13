@@ -52,7 +52,7 @@ angular.module('jobseekers.services', [])
 
 .service('Session', function() {
     this.create = function(user) {
-     
+
         this.user = user;
         this.userRole = user.userRole;
     };
@@ -77,7 +77,7 @@ angular.module('jobseekers.services', [])
       Session.destroy();
       $window.sessionStorage.removeItem("userInfo");
         $state.go('login');
-    }
+    };
 
     return authService;
 }])
@@ -161,12 +161,32 @@ angular.module('jobseekers.services', [])
   };
 })
 
-.factory('Jobs', function( $http,ENV) {
+.factory('Jobs',function($http,ENV){
+  var page=0;
+  var hasmore=false;//标识有没有更多数据
+  return{
+    GetFeed:function () {
+      page++;
+      return $http({
+        method:"jsonp",
+        // http://localhost/thinkphp_5.0.2_full/public/job?callback=JSON_CALLBACK
+        url:ENV.api+"/public/job?callback=JSON_CALLBACK",
+        // js:callback=?
+        params:{'p':page}
+      }).then(function (data) {
+        if(data){
+          return data;
+        }
+      });
+    }
+  };
+})
+
+.factory('Company' , function( $http,ENV) {
   
   var page=0;
   var hasmore = false;//标识有没有更多数据
   return {
-
     
     GetFeed: function() {
       page++;
@@ -181,11 +201,18 @@ angular.module('jobseekers.services', [])
                   } 
              });
     },
+<<<<<<< HEAD
 
     getJobDetail:function  (jobId) {
        return $http({
               method:"jsonp",
               url:ENV.api+"/public/job/"+jobId+"?callback=JSON_CALLBACK",
+=======
+    getDetail:function  (id) {
+       return $http({
+              method:"jsonp",
+              url:ENV.api+"/public/company/"+id+"?callback=JSON_CALLBACK",
+>>>>>>> bcdc541780f0daa3a868e7cf09f34aa74338149b
               }).then(function(data){ 
                  
                   if (data) {
@@ -193,9 +220,11 @@ angular.module('jobseekers.services', [])
                   } 
              });
     }
+
   };
 })
 
+<<<<<<< HEAD
 .factory('Company' , function( $http,ENV) {
   
   var page=0;
@@ -231,4 +260,33 @@ angular.module('jobseekers.services', [])
 })
 
  
+=======
+ .factory('service', function($http) {
+    return {
+      //加载数据
+      load: function() {
+        return $http.get(location.href + '?a=select')
+          .then(function(response) {
+            return response['data']
+          })
+      },
+      //保存数据
+      save: function(index, data) {
+        $http({
+          method: 'get',
+          url: location.href + '?a=save&index=' + index,
+          params: data
+        })
+      },
+      //删除数据
+      remove: function(index, data) {
+        $http({
+          method: 'get',
+          url: location.href + '?a=delete&index=' + index,
+          params: data
+        })
+      }
+    }
+  })
+>>>>>>> bcdc541780f0daa3a868e7cf09f34aa74338149b
 ;

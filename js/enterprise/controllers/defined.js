@@ -1,7 +1,7 @@
 angular.module('enterprise.controllers', [])
 
 .controller('ExpertCtrl', function($scope, $ionicModal, $ionicPopover, $state, $ionicViewSwitcher,$http,$window,ENV) {
-  // 发布职位
+  // // 发布职位
   //模态框
   $ionicModal.fromTemplateUrl('publish_job.html', {
     scope: $scope
@@ -47,6 +47,29 @@ angular.module('enterprise.controllers', [])
      $scope.jobname_modal.hide();
   };
 
+  // //职位名称模态框
+  // $ionicModal.fromTemplateUrl('jobName.html', {
+  //   scope: $scope
+  // }).then(function (modal) {
+  //   $scope.jobname_modal = modal;
+  // });
+  //  // 显示发布职位的页面
+  // $scope.show_jobname_model = function () {
+  //   $scope.jobname_modal.show();
+  // };
+  //   // 隐藏发布职位的页面
+  // $scope.hidePopover = function () {
+  //   $scope.popover.hide();
+  //   $scope.jobname_modal.hide();
+
+  // };
+  // $scope.saveJobname = function (job_name) {
+
+  //   localStorage.setItem('job_info', JSON.stringify({'job_name':job_name}));
+  //   $scope.job_info.job_name=job_name;
+  //    $scope.jobname_modal.hide();
+  // };
+
   // 发表职位
   
  $scope.publish_info = function () {
@@ -81,8 +104,82 @@ angular.module('enterprise.controllers', [])
 
     $state.go('tab.chats');
     $ionicViewSwitcher.nextDirection('forwards');
-  }
+  };
 
+  // 在电脑上发布职位
+  $ionicModal.fromTemplateUrl('fabu_pc.html',{
+    scope: $scope
+  }).then(function (modal) {
+    $scope.fabupc=modal;
+  });
+  $scope.fabu_pc = function () {
+    $scope.fabupc.show();
+  };
+  $scope.closeFaBuPc = function () {
+    $scope.fabupc.hide();
+  };
+
+  // 公司信息
+  $ionicModal.fromTemplateUrl('comp_info.html',{
+    scope: $scope
+  }).then(function (modal) {
+    $scope.compInfo=modal;
+  });
+  $scope.comp_Info = function () {
+    $scope.compInfo.show();
+  };
+  $scope.closeCompInfo = function () {
+    $scope.compInfo.hide();
+  };
+
+  // 职位类型
+  $ionicModal.fromTemplateUrl('jobType.html',{
+    scope: $scope
+  }).then(function (modal) {
+    $scope.jobType=modal;
+  });
+  $scope.job_Type = function () {
+    $scope.jobType.show();
+  };
+  $scope.closeJobType = function () {
+    $scope.jobType.hide();
+  };
+
+  // 职位名称
+  $scope.job_info=JSON.parse(localStorage.getItem("job_info") || '[]');
+  $ionicModal.fromTemplateUrl('jobName.html',{
+    scope: $scope
+  }).then(function (modal) {
+    $scope.jobName=modal;
+  });
+  $scope.job_Name = function () {
+    $scope.jobName.show();
+  };
+  $scope.closeJobName = function () {
+    $scope.jobName.hide();
+  };
+
+  $scope.saveJobName = function (job_name) {
+    localStorage.setItem('job_info', JSON.stringify({'job_name':job_name}));
+    console.log(localStorage);
+    // console.log(job_name);
+    $scope.job_info.job_name=job_name;
+    $scope.jobName.hide();
+  };
+
+  // 发布职位
+  $scope.publish_info = function () {
+    console.log("publish_info: "+$window.sessionStorage["userInfo"]);
+    $http({
+      'method': 'jsonp',
+      // create:先要登录验证密码
+      'url': ENV.api+'/public/job/create',
+      'params': $scope.job_info
+    }).then(function (rtn_data) {
+      console.log(rtn_data);
+    });
+    $scope.modal.hide();
+  }
 })
 
 .controller('ChatsCtrl', function($scope, Chats, $state, $ionicViewSwitcher) {
@@ -129,6 +226,14 @@ angular.module('enterprise.controllers', [])
     $state.go('tab.chats');
     $ionicViewSwitcher.nextDirection('back');
   }
+})
+
+.controller('LoginCtrl',function ($scope) {
+
+})
+
+.controller('FaBuPcCtrl',function ($scope) {
+
 })
 ;
 

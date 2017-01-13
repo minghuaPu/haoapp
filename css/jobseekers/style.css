@@ -430,3 +430,146 @@ a{
   color:#fff;
   margin-bottom: 10px;
 }
+/*简历*/
+
+.bar .title+ .button {
+	color: #00b38a;
+}
+
+.resume {
+	padding: 15px;
+	background-color: #efefef;
+}
+
+.resume .avatar-add {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.resume .avatar-img {
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+}
+
+.resume aside {
+	padding: 15px;
+	background-color: #fff;
+}
+
+.resume aside div+div {
+	padding-top: 15px;
+}
+
+.resume .edit {
+	float: right;
+	padding-left: 15px;
+	color: #00b38a;
+	cursor: pointer;
+}
+
+.resume .add {
+	display: block;
+	width: 100%;
+	height: 80px;
+	color: #00b38a;
+	background-color: #e2edef;
+	border: 1px dotted #00b38a;
+}
+
+.resume .circle {
+	padding-left: 15px;
+	border-left: 1px solid #efefef;
+}
+
+.resume .circle:before {
+	float: left;
+	display: inline-block;
+	content: "";
+	width: 1px;
+	height: 16px;
+	margin-left: -16px;
+	background-color: #00b38a;
+}
+
+.modal .list .item span {
+	display: inline-block;
+	width: 35%;
+}
+
+.modal .list .item input,
+.modal .list .item select {
+	width: 60%;
+	font-size: 16px;
+	color: #666;
+	border: none;
+	background-color: transparent;
+	-webkit-appearance: none;
+}
+
+.modal .list .item textarea {
+	width: 100%;
+	margin-top: 10px;
+	padding: 10px;
+	color: #555;
+	resize: none;
+	background-color: #efefef;
+}
+
+
+/*我的*/
+
+.me .icon {
+	font-size: 18px;
+}
+
+.me .list .item:nth-child(1) {
+	display: flex;
+	align-items: center;
+	color: #fff;
+	background-color: #00b38a;
+}
+
+.me .list .item:nth-child(1) img {
+	width: 80px;
+	height: 80px;
+	margin-right: 16px;
+	border-radius: 50%;
+}
+
+.me .list .item:nth-child(1) i {
+	position: absolute;
+	right: 16px;
+}
+
+.me .list .item:nth-child(2) {
+	padding: 0;
+}
+
+.me .list .item:nth-child(2) a {
+	padding: 10px 15px;
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+	text-decoration: none;
+}
+
+.me .list .item:nth-child(2) a+a {
+	border-left: 1px dashed #efefef;
+}
+
+.me .list .item:nth-child(2) a:hover {
+	background-color: #efefef;
+}
+
+.me .list .item:nth-child(2) h2 {
+	font-size: 18px;
+}
+
+.me .item-icon-right .icon:last-child {
+	color: #999;
+}
+
+.me .item-divider {
+	min-height: 0;
+}
