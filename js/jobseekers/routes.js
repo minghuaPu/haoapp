@@ -146,7 +146,7 @@ angular.module('jobseekers')
     url: '/ucenter',
     views: {
       'tab-ucenter': {
-        templateUrl: 'templates/jobseekers/ucenter/me.html',
+        templateUrl: 'templates/jobseekers/ucenter/ucenter.html',
         controller: 'AccountCtrl'
       }
     },
