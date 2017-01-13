@@ -47,19 +47,19 @@ angular.module('jobseekers.controllers', [])
           // user_name和user_pwd 
           // 返回json格式
          // jquery ajax
-//        $http({
-//          method:"jsonp",
-//          url:ENV.api+"/public/user/login?callback=JSON_CALLBACK",
-//          params:user
-//          }).success(function(data){ 
-//             if (data) {
-//              $window.sessionStorage["userInfo"] = JSON.stringify(data);
-//              $scope.login(data);
-//              
-//              }else{
-//                $scope.success="用户名或密码不正确";
-//              }
-//         });
+          $http({
+            method:"jsonp",
+            url:ENV.api+"/public/user/login?callback=JSON_CALLBACK",
+            params:user
+            }).success(function(data){ 
+               if (data) {
+                $window.sessionStorage["userInfo"] = JSON.stringify(data);
+                $scope.login(data);
+                
+                }else{
+                  $scope.success="用户名或密码不正确";
+                }
+           });
        $state.go('tab.home');
 
       
