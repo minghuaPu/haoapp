@@ -26,7 +26,7 @@
                 <h5 class="title">发布职位</h5>
               </div>
               <div class="col col-10">
-                <h6>发布</h6>
+                <h6 ng-click="publish_info()">发布</h6>
               </div>
             </div>
           </div>
@@ -59,11 +59,13 @@
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
 
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="show_jobname_model();">
                 <span class="item-jobName">
                   职位名称
                 </span>
+
                 <i class="icon ion-ios-arrow-right"></i>
+                <span class="item-details"> {{job_info.job_name}}</span>
               </a>
               <a href="#" class="item item-icon-right">
                 <span class="item-skillRequire">
@@ -141,5 +143,42 @@
       </ion-popover-view>
 
     </script>
+    
+
+    <script id="jobname_model.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-content>
+
+          <div class="publish_head">
+            <div class="row">
+              <div class="col col-10">
+                <i class="icon ion-ios-arrow-left" ng-click="hidePopover($event)"></i>
+              </div>
+              <div class="col col-80">
+                <h5 class="title">职位名称</h5>
+              </div>
+              <div class="col col-10">
+                
+                <i class="icon ion-checkmark-round" ng-click="saveJobname(job_name)"></i>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="publish_content">
+
+            <div class="publish_pc">
+              <p>
+                <span>职位名称</span>
+                <i class="icon ion-ios-arrow-right"></i> 
+                <input ng-model="job_name" value=" {{job_info.job_name}}"> 
+              </p>
+            </div>
+
+            
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
   </ion-content>
 </ion-view>

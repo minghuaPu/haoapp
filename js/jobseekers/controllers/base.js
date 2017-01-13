@@ -164,7 +164,7 @@ angular.module('jobseekers.controllers', [])
  
   PersonService.GetFeed().then(function(items){
     $scope.items = items;
-    console.log($scope.items);
+    //console.log($scope.items);
   });
  
   $scope.doRefresh = function() {

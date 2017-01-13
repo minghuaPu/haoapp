@@ -47,7 +47,7 @@ angular.module('jobseekers')
   })
 
   .state('tab.job-detail', {
-   url: '/home/job-detail',
+   url: '/home/job-detail/:jobId',
    views: {
      'tab-home': {
        templateUrl: 'templates/jobseekers/job-detail.html',
@@ -67,7 +67,7 @@ angular.module('jobseekers')
     })
 
  .state('tab.company-detail', {
-   url: '/companys/company-detail',
+   url: '/companys/company-detail/:companyId',
    views: {
      'tab-companys': {
        templateUrl: 'templates/jobseekers/company/company-detail.html',

@@ -45,7 +45,7 @@
 
     <ion-list class="content_list">
 
-      <ion-item href="#/tab/home/job-detail" ng-repeat="item in job_lists">
+      <ion-item ng-repeat="item in job_lists" href="#/tab/home/job-detail/{{item.id}}" >
  
         <div class="row">
           <div class="col col-75 job_name">{{ item.job_name }}</div>

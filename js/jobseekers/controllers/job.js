@@ -1,10 +1,7 @@
 angular.module('jobseekers.controllers')
 
-<<<<<<< HEAD
 .controller('DashCtrl', function($scope,$ionicModal,$ionicPopover,$state,$ionicViewSwitcher,Jobs) {
-=======
-.controller('DashCtrl', function($scope,$ionicModal,PersonService,$ionicPopover,$state,$ionicViewSwitcher) {
->>>>>>> 48467cbe036f3da910b4627b6e2fa8f62a839c6d
+ 
      $ionicModal.fromTemplateUrl('templates/index_search.html', {
         scope: $scope,
          animation: 'animated fadeInRightBig'
@@ -29,7 +26,7 @@ angular.module('jobseekers.controllers')
 
             Jobs.hasmore = response.data.length>0;
             $scope.job_lists=response.data;
-          
+          //console.log($scope.job_lists);
          
         })
 
@@ -46,7 +43,7 @@ angular.module('jobseekers.controllers')
       }
 
       $scope.loadMore=function  () {
-        console.log(Jobs.hasmore);
+        //console.log(Jobs.hasmore);
         if (Jobs.hasmore) {
           
           Jobs.GetFeed().then(function  (rtn_data) {
@@ -55,6 +52,7 @@ angular.module('jobseekers.controllers')
               // $scope.job_lists=
              for(var i=0;i<rtn_data.data.length;i++){
                 $scope.job_lists.push(rtn_data.data[i]);
+                //console.log($scope.job_lists);
              }
           })
         }
@@ -87,8 +85,12 @@ angular.module('jobseekers.controllers')
 })
  
 
-.controller('JobDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-  $scope.myActiveSlide = 1;
+.controller('JobDetailCtrl', function($scope, $stateParams, Jobs) {
 
+     Jobs.getJobDetail($stateParams.jobId).then(function(response){
+        $scope.job=response.data;
+        //console.log($scope.job);
+     })
+
+    
 })

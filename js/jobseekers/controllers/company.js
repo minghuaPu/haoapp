@@ -93,7 +93,7 @@ angular.module('jobseekers.controllers')
   
 })
 
-.controller('CompanyDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-  $scope.myActiveSlide = 1;
+.controller('CompanyDetailCtrl', function($scope, $stateParams, Company) {
+  $scope.company = Company.getDetail($stateParams.companyId);
+  //console.log($scope.company);
 })
