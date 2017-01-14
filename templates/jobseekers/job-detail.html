@@ -2,32 +2,23 @@
 	<ion-content class="job-detail">
 		<div class="job-item">
 			<div class="row">
-				<div class="col jobname">{{ job.job_name }}</div>
-				<div class="col salary">8K-12k</div>
+				<div class="col jobname">{{job.job_name}}</div>
+				<div class="col salary">￥{{job.salary_low}}-{{job.salary_hig}}</div>
 			</div>
 			<div class="row company-name">
-				<div class="col-40">广州外宝电子商务</div>
+				<div class="col-40">{{job.company_name}}</div>
 				<div class="col-60">未融资</div>
 			</div>
 			<div class="row">
 				<div class="job-info">
-					<i class="ion-location"></i>广州天河区沙河&nbsp;<i class="ion-briefcase"></i>1-3年&nbsp;<i class="ion-university"></i>大专
+					<i class="ion-location"></i>{{job.city}}&nbsp;<i class="ion-briefcase"></i>{{job.work_time}}&nbsp;<i class="ion-university"></i>{{job.education}}
 				</div>
 			</div>
 		</div>
 		<div class="detail">
 			<div class="row">职位详情</div>
 			<div class="dec">
-				<p>岗位职责：</p>
-				1、负责网站后端代码编写，独立完成项目
-				2、项目完成后做初测，后续转接测试工程师
-				3、负责js代码编写并于前端工程师沟通配合
-				4、负责日常维护、改版负责日常维护、改版
-				5、负责网站后端代码编写，独立完成项目
-				6、项目完成后做初测，后续转接测试工程师
-				7、负责js代码编写并于前端工程师沟通配合
-				8、负责网站后端代码编写，独立完成项目
-				9、负责网站后端代码编写，独立完成项目
+				{{job.job_describe}}
 			</div>
 			<div class="row">
 				<div class="col">
@@ -37,12 +28,12 @@
 		</div>
 		<div class="job-require">
 			<div class="row">技能要求</div>
-			<div class="row"><span>PHP</span><span>ERP</span><span>后端开发</span></div>
+			<div class="row">{{job.job_require}}</div>
 		</div>
 		<div class="job-publisher">
 			<div class="row">
 				<div class="col">发布人</div>
-				<div class="col more">Ta发布的更多职位<i class="ion-chevron-right"></i></div>
+				<div class="col more"><a ng-click="show_morejob()">Ta发布的更多职位<i class="ion-chevron-right"></i></a></div>
 			</div>
 			<div class="row">
 				<div class="col">
@@ -52,16 +43,48 @@
 				</div>
 				<div class="col-80">
 					<div class="row">
-						<div class="col-70">爱迪生<span></span>人力资源管理</div>
+						<div class="col-70">
+							<div class="row">爱迪生<span></span>人力资源管理</div>
+						</div>
 						<div class="col">刚刚活跃</div>
 					</div>
 					<div class="row">两天前发布</div>
 				</div>
 			</div>
 		</div>
-		<div class="button bt-chat">
-			立即沟通
+		<div class="button bt-delivery">
+			投递简历
 		</div>
+
+
+		<script id="templates/morejob.html" type="text/ng-template">
+	      <ion-modal-view  ng-controller="MoreJobCtrl">
+	        <ion-header-bar class="bar bar-header bar-positive">
+	          <h1 class="title">更多职位</h1>
+	          <button class="button button-clear button-primary" ng-click="modal.hide()">取消</button>
+	        </ion-header-bar>
+	        <ion-content class="morejob padding">
+	        	<a ng-repeat="item in job_list" href="#/tab/home/job-detail/{{item.id}}" ng-click="modal.hide()">
+	        		<div class="job-item">
+	        			<div class="row">
+	        				<div class="col jobname">{{item.job_name}}</div>
+	        				<div class="col salary">￥{{item.salary_low}}-{{item.salary_hig}}</div>
+	        			</div>
+	        			<div class="row company-name">
+	        				<div class="col-40">{{item.company_name}}</div>
+	        				<div class="col-60">未融资</div>
+	        			</div>
+	        			<div class="row">
+	        				<div class="job-info">
+	        					<i class="ion-location"></i>{{item.city}}&nbsp;<i class="ion-briefcase"></i>{{item.work_time}}&nbsp;<i class="ion-university"></i>{{item.education}}
+	        				</div>
+	        			</div>
+	        		</div>
+	        	</a>
+	          
+	        </ion-content>
+	      </ion-modal-view>
+	    </script>
 	</ion-content>
 	
 </ion-view>

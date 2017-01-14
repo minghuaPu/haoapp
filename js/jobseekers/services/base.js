@@ -178,6 +178,17 @@ angular.module('jobseekers.services', [])
           return data;
         }
       });
+    },
+    getJobDetail:function  (jobId) {
+       return $http({
+              method:"jsonp",
+              url:ENV.api+"/public/job/"+jobId+"?callback=JSON_CALLBACK",
+              }).then(function(data){ 
+                 
+                  if (data) {
+                       return data;
+                  } 
+             });
     }
   };
 })
@@ -201,18 +212,11 @@ angular.module('jobseekers.services', [])
                   } 
              });
     },
-<<<<<<< HEAD
 
-    getJobDetail:function  (jobId) {
+    getCompanyDetail:function  (companyId) {
        return $http({
               method:"jsonp",
-              url:ENV.api+"/public/job/"+jobId+"?callback=JSON_CALLBACK",
-=======
-    getDetail:function  (id) {
-       return $http({
-              method:"jsonp",
-              url:ENV.api+"/public/company/"+id+"?callback=JSON_CALLBACK",
->>>>>>> bcdc541780f0daa3a868e7cf09f34aa74338149b
+              url:ENV.api+"/public/company/"+companyId+"?callback=JSON_CALLBACK",
               }).then(function(data){ 
                  
                   if (data) {
@@ -224,43 +228,6 @@ angular.module('jobseekers.services', [])
   };
 })
 
-<<<<<<< HEAD
-.factory('Company' , function( $http,ENV) {
-  
-  var page=0;
-  var hasmore = false;//标识有没有更多数据
-  return {
-    
-    GetFeed: function() {
-      page++;
-       return $http({
-              method:"jsonp",
-              url:ENV.api+"/public/company?callback=JSON_CALLBACK",
-              params:{'p':page}
-              }).then(function(data){ 
-                 
-                  if (data) {
-                       return data;
-                  } 
-             });
-    },
-    getDetail:function  (id) {
-       return $http({
-              method:"jsonp",
-              url:ENV.api+"/public/company/"+id+"?callback=JSON_CALLBACK",
-              }).then(function(data){ 
-                 
-                  if (data) {
-                       return data;
-                  } 
-             });
-    }
-
-  };
-})
-
- 
-=======
  .factory('service', function($http) {
     return {
       //加载数据
@@ -288,5 +255,5 @@ angular.module('jobseekers.services', [])
       }
     }
   })
->>>>>>> bcdc541780f0daa3a868e7cf09f34aa74338149b
+
 ;

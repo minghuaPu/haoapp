@@ -111,10 +111,6 @@ a{
   margin:10px;
   padding: 10px 0px 0px 10px;
 }
-/*.company-content .list .item ion-item{
-  padding: 0;
-  margin: 0;
-}*/
 .company-content .list .item .row .col{
   margin:0;
   padding: 0;
@@ -136,10 +132,6 @@ a{
   color:#000;
   font-size: 18px;
 }
-/*ion-content .list .item .row .col-80 .row .icon{
-  color:#bbb;
-  margin-left: 10px;
-}*/
 .company-content .list .item .row .col-80 .lab span{
   font-size: 12px;
 }
@@ -165,7 +157,7 @@ a{
   top:10px;
    color:#bbb;
 }
-/*************************slidebox测试代码*****************************/
+/**********公司详情slidebox代码*************/
  .company-detail .slidebox{
   width:100%;
   height:150px;
@@ -212,7 +204,7 @@ a{
   .company-detail .slidebox .box h1{
       position:relative; top:50%; transform:translateY(-50%); 
     }
-/*************************slidebox测试代码*****************************/
+/**********公司详情slidebox代码**************/
 /*公司详情页*/
 .company-detail .company-box{
   border-bottom: 1px solid #eee;
@@ -406,7 +398,11 @@ a{
   font-size: 12px;
   text-align: right;
 }
-.job-detail .job-publisher .row:first-child .more i{
+.job-detail .job-publisher .row:first-child .more a{
+  color:#75C7B4;
+  cursor: pointer;
+}
+.job-detail .job-publisher .row:first-child .more a i{
   margin:0px 4px;
 }
 .job-detail .job-publisher .row .col .image{
@@ -418,18 +414,59 @@ a{
 .job-detail .job-publisher .row .col-80 .row{
   color:#555;
 }
+.job-detail .job-publisher .row .col-80 .row .col-70 .row{
+  margin: 0;
+  padding: 0;
+}
+.job-detail .job-publisher .row .col-80 .row .col-70 .row span{
+  display: block;
+  margin: 5px 6px;
+  width:2px;
+  height:12px;
+  background: #999;
+}
 .job-detail .job-publisher .row .col-80 .row .col{
   padding: 0;
   font-size: 12px;
   text-align: right;
   color:#999;
 }
-.job-detail .bt-chat{
+.job-detail .bt-delivery{
   width:100%;
   background:#75C7B4;
   color:#fff;
   margin-bottom: 10px;
 }
+/****更多工作模态框*****/
+.morejob{
+  background: #EFEFEF;
+  padding:10px 10px; 
+}
+.morejob a .job-item{
+  background: #fff;
+  margin-bottom: 10px;
+}
+.morejob a .job-item .company-name{
+  padding-left: 10px;
+  color:#666;
+}
+.morejob a .job-item .row .jobname{
+  text-align: left;
+  color:#75C7B4;
+}
+.morejob a .job-item .row .salary{
+  text-align: right;
+  color:#E18080;
+}
+.morejob a .job-item .row .job-info{
+  font-size: 12px;
+  color:#999;
+  margin: 5px 0px;
+}
+.morejob a .job-item .row .job-info i{
+  margin:0px 3px 0px 7px;
+}
+
 /*简历*/
 
 .bar .title+ .button {

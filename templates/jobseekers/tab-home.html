@@ -48,22 +48,22 @@
       <ion-item ng-repeat="item in job_lists" href="#/tab/home/job-detail/{{item.id}}" >
  
         <div class="row">
-          <div class="col col-75 job_name">{{ item.job_name }}</div>
-          <div class="col job_money">8k-19k</div>
+          <div class="col col-75 job_name">{{item.job_name}}</div>
+          <div class="col job_money">￥{{item.salary_low}}-{{item.salary_hig}}</div>
         </div>
-        <div class="row">中杰科技 未融资</div>
+        <div class="row">{{item.company_name}} 未融资</div>
         <div class="row job_detailed">
           <span>
             <i class="icon ion-location"></i>
-            广州
+            {{item.city}}
           </span>
           <span>
             <i class="icon ion-briefcase"></i>
-            3-5年
+            {{item.work_time}}
           </span>
           <span>
             <i class="icon ion-university"></i>
-            不限
+            {{item.education}}
           </span>
         </div>
         <div class="row job_boss">   lily 产品总监</div>

@@ -76,10 +76,5 @@ angular.module('jobseekers.controllers')
 })
 
 .controller('CompanyDetailCtrl', function($scope, $stateParams, Company) {
-  $scope.company = Company.getDetail($stateParams.companyId);
-<<<<<<< HEAD
-  //console.log($scope.company);
-=======
- 
->>>>>>> bcdc541780f0daa3a868e7cf09f34aa74338149b
+  $scope.company = Company.getCompanyDetail($stateParams.companyId);
 })
