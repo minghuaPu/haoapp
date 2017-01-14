@@ -1,15 +1,13 @@
 angular.module('enterprise.controllers', [])
 
-.controller('ExpertCtrl', function($scope, $ionicModal, $ionicPopover, $state, $ionicViewSwitcher,$http,$window,ENV) {
-  // // 发布职位
+.controller('ExpertCtrl', function($scope, $ionicModal, $ionicPopover, $state, $ionicViewSwitcher,$http,$window,$ionicScrollDelegate,$rootScope,ENV) {
+  // 发布职位
   //模态框
   $ionicModal.fromTemplateUrl('publish_job.html', {
     scope: $scope
   }).then(function (modal) {
     $scope.modal = modal;
   });
-
-  
   // 显示发布职位的页面
   $scope.publish_job = function () {
     $scope.modal.show();
@@ -19,75 +17,11 @@ angular.module('enterprise.controllers', [])
     $scope.popover.hide();
     $scope.modal.hide();
 
-  }; 
-
-
-  $scope.job_info=JSON.parse(localStorage.getItem("job_info") || '[]');
-
-  //职位名称模态框
-  $ionicModal.fromTemplateUrl('jobname_model.html', {
-    scope: $scope
-  }).then(function (modal) {
-    $scope.jobname_modal = modal;
-  });
-   // 显示发布职位的页面
-  $scope.show_jobname_model = function () {
-    $scope.jobname_modal.show();
   };
-    // 隐藏发布职位的页面
-  $scope.hidePopover = function () {
-    $scope.popover.hide();
-    $scope.jobname_modal.hide();
-
-  };
-  $scope.saveJobname = function (job_name) {
-
-    localStorage.setItem('job_info', JSON.stringify({'job_name':job_name}));
-    $scope.job_info.job_name=job_name;
-     $scope.jobname_modal.hide();
-  };
-
-  // //职位名称模态框
-  // $ionicModal.fromTemplateUrl('jobName.html', {
-  //   scope: $scope
-  // }).then(function (modal) {
-  //   $scope.jobname_modal = modal;
-  // });
-  //  // 显示发布职位的页面
-  // $scope.show_jobname_model = function () {
-  //   $scope.jobname_modal.show();
-  // };
-  //   // 隐藏发布职位的页面
-  // $scope.hidePopover = function () {
-  //   $scope.popover.hide();
-  //   $scope.jobname_modal.hide();
-
-  // };
-  // $scope.saveJobname = function (job_name) {
-
-  //   localStorage.setItem('job_info', JSON.stringify({'job_name':job_name}));
-  //   $scope.job_info.job_name=job_name;
-  //    $scope.jobname_modal.hide();
-  // };
-
-  // 发表职位
-  
- $scope.publish_info = function () {
-  // 这个是获取用户信息
-  // $window.sessionStorage["userInfo"]
-    $http({
-        'method':'jsonp',
-        'url':ENV.api+'/public/job/create',
-        'params':$scope.job_info,
-    }).then(function  (rtn_data) {
-       console.log(rtn_data);
-    });
-    
-  };
-
   // 浮动框
   $ionicPopover.fromTemplateUrl('my-popover.html', {
-    scope:$scope
+    scope:$scope,
+    animation:'animated fadeIn'
   }).then(function (popover) {
     $scope.popover = popover;
   });
@@ -147,6 +81,7 @@ angular.module('enterprise.controllers', [])
 
   // 职位名称
   $scope.job_info=JSON.parse(localStorage.getItem("job_info") || '[]');
+  // console.log($scope.job_info);对象
   $ionicModal.fromTemplateUrl('jobName.html',{
     scope: $scope
   }).then(function (modal) {
@@ -179,7 +114,273 @@ angular.module('enterprise.controllers', [])
       console.log(rtn_data);
     });
     $scope.modal.hide();
+  };
+
+  // 技能要求
+  $ionicModal.fromTemplateUrl('jobRequire.html',{
+    scope: $scope
+  }).then(function (modal) {
+    $scope.jobRequire=modal;
+  });
+  $scope.job_Require = function () {
+    $scope.jobRequire.show();
+  };
+  $scope.closeJobRequire = function () {
+    $scope.jobRequire.hide();
+  };
+
+  // 薪资范围 浮动框
+  $ionicPopover.fromTemplateUrl('salaryRange.html', {
+    scope:$scope,
+    animation:'animated fadeInUp'
+  }).then(function (popover) {
+    $scope.salaryRange = popover;
+  });
+  $scope.salary_Range = function ($event) {
+    $scope.salaryRange.show($event);
+  };
+  $scope.closeSalaryRange = function () {
+    $scope.salaryRange.hide();
+  };
+  // 保存
+  $scope.saveSalaryRange = function (salary_range) {
+    // salary_range=$rootScope.salary1+'k - '+$rootScope.salary2+'k';
+    // 对象直接点添加属性
+    $scope.job_info.job_salary=salary_range;
+    // stringify()用于从一个对象解析出字符串
+    localStorage.setItem('job_info', JSON.stringify($scope.job_info));
+    console.log(localStorage);
+    $scope.salaryRange.hide();
+  };
+  // var arr=[];
+  $scope.rangeLeft=[];
+  $scope.rangeRight=[];
+  for(var i=0;i<50;i++){
+    // arr[i]=(i+1)+'k';
+    // console.log(arr[i]);
+    $scope.rangeLeft.push((i+1)+'k');
+    $scope.rangeRight.push((i+1)+'k');
   }
+  $scope.rangeRight.push('100k');
+  // console.log($scope.rangeLeft);
+  // on-scroll
+  var n=0,m=0,n2=0,m2=0;
+
+  // 看看页面有没有放缩35？38.1818?
+  $scope.myMove=function () {
+    // console.log(this);
+    this.$onScrollComplete=function (env) {
+      // console.log(env.scrollTop);
+      var t=env.scrollTop;
+      // console.log(t);
+      n=parseInt(t/35);
+      m=n+1;
+      $rootScope.salary1=m;
+      // console.log("第"+m+"个");
+      // ||  scrollBy
+      // 停的条件是t=n*35
+      function calca() {
+          if(parseFloat(t%35)<17.5){
+            // console.log("↓");
+            $ionicScrollDelegate.$getByHandle("scroll1").scrollTo(0,n*35,[true]);
+            $ionicScrollDelegate.$getByHandle("scroll2").scrollTo(0,m*35,[true]);
+            t=n*35;
+          }
+          else{
+            // console.log("↑");
+            $ionicScrollDelegate.$getByHandle("scroll1").scrollTo(0,m*35,[true]);
+            $ionicScrollDelegate.$getByHandle("scroll2").scrollTo(0,(m+1)*35,[true]);
+            t=m*35;
+          }
+      }
+      calca();
+      // e.stopPropagation();冒泡
+      // e.preventDefault();默认
+    };
+  };
+
+
+  $scope.myMove2=function () {
+    this.$onScrollComplete=function (env) {
+      var t2=env.scrollTop;
+      n2=parseInt(t2/35);
+      m2=n2+1;
+      if(m2==51){m2=100;$rootScope.salary2=m2;}
+      else{$rootScope.salary2=m2;}
+      function calca2() {
+        if(parseFloat(t2%35)<17.5){
+          t2=n2*35;
+          $ionicScrollDelegate.$getByHandle("scroll2").scrollTo(0,n2*35,[true]);
+        }else{
+          t2=m2*35;
+          $ionicScrollDelegate.$getByHandle("scroll2").scrollTo(0,m2*35,[true]);
+        }
+      }
+      calca2();
+    }
+  };
+  // 经验要求 浮动框
+  $ionicPopover.fromTemplateUrl('expRequire.html', {
+    scope:$scope,
+    animation:'animated fadeInUp'
+  }).then(function (popover) {
+    $scope.expRequire = popover;
+  });
+  $scope.exp_Require = function ($event) {
+    $scope.expRequire.show($event);
+  };
+  $scope.closeExpRequire = function () {
+    $scope.expRequire.hide();
+  };
+  $scope.saveExpRequire = function (job_exp) {
+    // console.log(localStorage);
+    // $scope.job_info.job_exp=$rootScope.expItems[$rootScope.exp];
+    $scope.job_info.job_exp=job_exp;
+    localStorage.setItem('job_info', JSON.stringify($scope.job_info));
+    console.log(localStorage);
+    $scope.expRequire.hide();
+  };
+  $rootScope.expItems=['不限','应届生','1年以内','1-3年','3-5年','5-10年','10年以上'];
+  $scope.myMoveExp=function () {
+    this.$onScrollComplete=function (env) {
+      var t=env.scrollTop;
+      n=parseInt(t/35);
+      m=n+1;
+      $rootScope.exp=n;//数组0开始
+      // console.log($rootScope.exp);
+      // console.log($rootScope.expItems[$rootScope.exp]);
+      function calculate() {
+        if(parseFloat(t%35)<17.5){
+          $ionicScrollDelegate.$getByHandle("scrollExp").scrollTo(0,n*35,[true]);
+          t=n*35;
+        }
+        else{
+          $ionicScrollDelegate.$getByHandle("scrollExp").scrollTo(0,m*35,[true]);
+          t=m*35;
+        }
+      }
+      calculate();
+    };
+  };
+
+  // 学历要求 浮动框
+  $ionicPopover.fromTemplateUrl('eduRequire.html', {
+    scope:$scope,
+    animation:'animated fadeInUp'
+  }).then(function (popover) {
+    $scope.eduRequire = popover;
+  });
+  $scope.edu_Require = function ($event) {
+    $scope.eduRequire.show($event);
+  };
+  $scope.closeEduRequire = function () {
+    $scope.eduRequire.hide();
+  };
+  $scope.saveEduRequire = function () {
+    $scope.eduRequire.hide();
+  };
+
+  $rootScope.eduItems=['不限','大专','本科','硕士','博士'];
+  $scope.saveEduRequire = function (job_edu) {
+    // console.log(localStorage);
+    // $scope.job_info.job_exp=$rootScope.expItems[$rootScope.exp];
+    $scope.job_info.job_edu=job_edu;
+    localStorage.setItem('job_info', JSON.stringify($scope.job_info));
+    console.log(localStorage);
+    $scope.eduRequire.hide();
+  };
+  $scope.myMoveEdu=function () {
+    this.$onScrollComplete=function (env) {
+      var t=env.scrollTop;
+      n=parseInt(t/35);
+      m=n+1;
+      $rootScope.edu=n;//数组0开始
+      // console.log($rootScope.exp);
+      // console.log($rootScope.expItems[$rootScope.exp]);
+      function calculate() {
+        if(parseFloat(t%35)<17.5){
+          $ionicScrollDelegate.$getByHandle("scrollEdu").scrollTo(0,n*35,[true]);
+          t=n*35;
+        }
+        else{
+          $ionicScrollDelegate.$getByHandle("scrollEdu").scrollTo(0,m*35,[true]);
+          t=m*35;
+        }
+      }
+      calculate();
+    };
+  };
+
+  // 工作城市 浮动框
+  $ionicPopover.fromTemplateUrl('jobCity.html', {
+    scope:$scope,
+    animation:'animated fadeInUp'
+  }).then(function (popover) {
+    $scope.jobCity = popover;
+  });
+  $scope.job_City = function ($event) {
+    $scope.jobCity.show($event);
+  };
+  $scope.closeJobCity = function () {
+    $scope.jobCity.hide();
+  };
+  $scope.saveJobCity = function () {
+    $scope.jobCity.hide();
+  };
+
+  // 工作地点 模态框
+  $ionicModal.fromTemplateUrl('jobLocation.html', {
+    scope:$scope
+  }).then(function (modal) {
+    $scope.jobLocation = modal;
+  });
+  $scope.job_Location = function () {
+    $scope.jobLocation.show();
+  };
+  $scope.closeJobLocation = function () {
+    $scope.jobLocation.hide();
+  };
+  $scope.saveJobLocation = function (job_location) {
+    $scope.job_info.job_location=job_location;
+    localStorage.setItem('job_info', JSON.stringify($scope.job_info));
+    $scope.jobLocation.hide();
+  };
+
+  // 职位描述 模态框
+  $ionicModal.fromTemplateUrl('jobDes.html', {
+    scope:$scope
+  }).then(function (modal) {
+    $scope.jobDes = modal;
+  });
+  $scope.job_Des = function () {
+    $scope.jobDes.show();
+  };
+  // $scope.closeJobDes = function () {
+  //   $scope.jobDes.hide();
+  // };
+  $scope.saveJobDes = function (job_des) {
+    $scope.job_info.job_des=job_des;
+    localStorage.setItem('job_info', JSON.stringify($scope.job_info));
+    console.log(localStorage);
+    $scope.jobDes.hide();
+  };
+
+  // 职位描述中的提示 浮动框
+  $ionicPopover.fromTemplateUrl('desWarning.html', {
+    scope:$scope
+  }).then(function (popover) {
+    $scope.desWarning = popover;
+  });
+  $scope.showDes = function ($event) {
+    $scope.desWarning.show($event);
+  };
+  $scope.closeDes = function () {
+    $scope.desWarning.hide();
+  };
+  $scope.ensureDes = function () {
+    $scope.jobDes.hide();
+    $scope.desWarning.hide();
+  };
 })
 
 .controller('ChatsCtrl', function($scope, Chats, $state, $ionicViewSwitcher) {
@@ -235,6 +436,7 @@ angular.module('enterprise.controllers', [])
 .controller('FaBuPcCtrl',function ($scope) {
 
 })
+
 ;
 
 

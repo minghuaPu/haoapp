@@ -523,30 +523,30 @@ a{
 	font-size: 18px;
 }
 
-.me .list .item:nth-child(1) {
+.me >.list .item:nth-child(1) {
 	display: flex;
 	align-items: center;
 	color: #fff;
 	background-color: #00b38a;
 }
 
-.me .list .item:nth-child(1) img {
+.me >.list .item:nth-child(1) img {
 	width: 80px;
 	height: 80px;
 	margin-right: 16px;
 	border-radius: 50%;
 }
 
-.me .list .item:nth-child(1) i {
+.me >.list .item:nth-child(1) i {
 	position: absolute;
 	right: 16px;
 }
 
-.me .list .item:nth-child(2) {
+.me >.list .item:nth-child(2) {
 	padding: 0;
 }
 
-.me .list .item:nth-child(2) a {
+.me >.list .item:nth-child(2) a {
 	padding: 10px 15px;
 	display: inline-block;
 	width: 50%;
@@ -554,15 +554,15 @@ a{
 	text-decoration: none;
 }
 
-.me .list .item:nth-child(2) a+a {
+.me >.list .item:nth-child(2) a+a {
 	border-left: 1px dashed #efefef;
 }
 
-.me .list .item:nth-child(2) a:hover {
+.me >.list .item:nth-child(2) a:hover {
 	background-color: #efefef;
 }
 
-.me .list .item:nth-child(2) h2 {
+.me >.list .item:nth-child(2) h2 {
 	font-size: 18px;
 }
 

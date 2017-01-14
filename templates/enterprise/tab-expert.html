@@ -25,14 +25,8 @@
               <div class="col col-80">
                 <h5 class="title">发布职位</h5>
               </div>
-<<<<<<< HEAD
-              <div class="col col-10">
-                <h6 ng-click="publish_info()">发布</h6>
-=======
- 
               <div class="col col-10" ng-click="publish_info()">
                 <h6>发布</h6>
->>>>>>> bcdc541780f0daa3a868e7cf09f34aa74338149b
               </div>
             </div>
           </div>
@@ -65,71 +59,63 @@
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
 
-<<<<<<< HEAD
-              <a href="#" class="item item-icon-right" ng-click="show_jobname_model();">
-=======
-
               <a href="#" class="item item-icon-right" ng-click="job_Name()">
->>>>>>> bcdc541780f0daa3a868e7cf09f34aa74338149b
                 <span class="item-jobName">
                   职位名称
                 </span>
-
                 <i class="icon ion-ios-arrow-right"></i>
-<<<<<<< HEAD
-                <span class="item-details"> {{job_info.job_name}}</span>
-=======
-
                 <span class="item-details">{{ job_info.job_name }}</span>
->>>>>>> bcdc541780f0daa3a868e7cf09f34aa74338149b
               </a>
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="job_Require()">
                 <span class="item-skillRequire">
                   技能要求
                 </span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="salary_Range($event)">
                 <span class="item-salaryRange">
                   薪资范围
                 </span>
                 <i class="icon ion-ios-arrow-right"></i>
+                <span class="item-details">{{ job_info.job_salary }}</span>
               </a>
 
               <div class="blank-line"></div>
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="exp_Require($event)">
                 <span class="item-exeRequire">
                   经验要求
                 </span>
-                <span class="item-details">不限</span>
+                <span class="item-details">{{job_info.job_exp}}</span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="edu_Require($event)">
                 <span class="item-quaRequire">
                   学历要求
                 </span>
-                <span class="item-details">本科</span>
+                <span class="item-details">{{job_info.job_edu}}</span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
 
               <div class="blank-line"></div>
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="job_City()">
                 <span class="item-workCity">
                   工作城市
                 </span>
                 <span class="item-details">北京</span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="job_Location()">
                 <span class="item-workLocation">
                   工作地点
                 </span>
+                <span class="item-details">{{job_info.job_location}}</span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
-              <a href="#" class="item item-icon-right">
+              <a href="#" class="item item-icon-right" ng-click="job_Des()">
                 <span class="item-jobDes">
                   职位描述
                 </span>
+                <span class="item-details">{{job_info.job_des}}</span>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
 
@@ -168,46 +154,7 @@
       </ion-popover-view>
 
     </script>
-<<<<<<< HEAD
-    
 
-    <script id="jobname_model.html" type="text/ng-template">
-      <ion-modal-view>
-        <ion-content>
-
-          <div class="publish_head">
-            <div class="row">
-              <div class="col col-10">
-                <i class="icon ion-ios-arrow-left" ng-click="hidePopover($event)"></i>
-              </div>
-              <div class="col col-80">
-                <h5 class="title">职位名称</h5>
-              </div>
-              <div class="col col-10">
-                
-                <i class="icon ion-checkmark-round" ng-click="saveJobname(job_name)"></i>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="publish_content">
-
-            <div class="publish_pc">
-              <p>
-                <span>职位名称</span>
-                <i class="icon ion-ios-arrow-right"></i> 
-                <input ng-model="job_name" value=" {{job_info.job_name}}"> 
-              </p>
-            </div>
-
-            
-        </ion-content>
-      </ion-modal-view>
-    </script>
-
-=======
- 
     <!--在电脑上发布职位 模态框-->
     <script id="fabu_pc.html" type="text/ng-template">
       <ion-modal-view>
@@ -287,7 +234,7 @@
             <div class="input-box">
               <label for="searchType">
                 <i class="icon ion-ios-search"></i>
-                <input type="text" id="searchType" placeholder="搜索">
+                <input type="text" id="searchType" placeholder="搜索" />
                 <span><i class="icon ion-ios-close-empty"></i></span>
               </label>
             </div>
@@ -308,14 +255,15 @@
         </ion-content>
       </ion-modal-view>
     </script>
- 
+
     <!--职位名称 模态框-->
     <script id="jobName.html" type="text/ng-template">
       <ion-modal-view>
+        <!--ng-click在头部数据没反应了-->
         <!--</ion-header-bar >-->
           <!--<i class="icon ion-ios-arrow-left" ng-click="closeJobName()"></i>-->
           <!--<h1 class="title">职位名称</h1>-->
-          <!--<i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ></i>-->
+          <!--<i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveJobName(job_name)"></i>-->
         <!--</ion-header-bar>-->
         <ion-content style="background: #e7eff0;">
           <div class="fabu-bar bar">
@@ -328,13 +276,186 @@
             <p><span>0</span>/20</p>
             <label for="jobName"></label>
             <!--job_info.job_name 点 从localStorage出来的刷新才不消失-->
-            <input type="text" id="jobName" ng-model="job_name" value="{{ job_info.job_name }}">
+            <input type="text" id="jobName" ng-model="job_name" value="{{ job_info.job_name }}" />
             <p class="warning" >不能填写QQ、微信、电话等联系方式,以及特殊符号</p>
           </div>
         </ion-content>
       </ion-modal-view>
     </script>
-     <!-- <modal-box name="jobName.html"></modal-box> -->
->>>>>>> bcdc541780f0daa3a868e7cf09f34aa74338149b
+
+    <!--技能要求 模态框-->
+    <script id="jobRequire.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-content style="background: #e7eff0;">
+          <div class="fabu-bar bar">
+            <i class="icon ion-ios-arrow-left" ng-click="closeJobRequire()" style="z-index: 100"></i>
+            <h1 class="title">技能要求</h1>
+            <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;"></i>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+    <!--薪资范围 浮动框-->
+    <script id="salaryRange.html" type="text/ng-template">
+      <ion-popover-view class="salaryRange" style="overflow: hidden">
+        <div class="salary-bar">
+          <i class="icon ion-ios-close-empty" ng-click="closeSalaryRange()"></i>
+          <span class="title">薪资范围</span>
+          <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveSalaryRange(salary1+'k - '+salary2+'k')"></i>
+          <!--<div class="blank-select"></div>-->
+        </div>
+
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="row" style="padding: 0;">
+          <div class="col col-50" style="padding: 0;">
+            <ion-scroll delegate-handle="scroll1" on-scroll="myMove()" class="scroll-left" scrollbar-y="false" scrollbar-x="false" style="height:176px;overflow-y: auto">
+              <ion-list class="salary-left-items">
+                <ion-item ng-repeat="salaryLeft in rangeLeft">
+                  <span>{{salaryLeft}}</span>
+                </ion-item>
+              </ion-list>
+            </ion-scroll>
+          </div>
+
+          <div class="col col-50" style="padding: 0;">
+            <ion-scroll class="scroll-right" delegate-handle="scroll2" on-scroll="myMove2()" scrollbar-y="false" scrollbar-x="false" style="height:176px;overflow-y: auto">
+              <ion-list class="salary-right-items">
+                <ion-item ng-repeat="salaryRight in rangeRight">
+                  <span>{{salaryRight}}</span>
+                </ion-item>
+              </ion-list>
+            </ion-scroll>
+          </div>
+
+
+        </div>
+      </ion-popover-view>
+
+    </script>
+
+    <!--经验要求 浮动框-->
+    <script id="expRequire.html" type="text/ng-template">
+      <ion-popover-view class="expRequire">
+        <div class="salary-bar">
+          <i class="icon ion-ios-close-empty" ng-click="closeExpRequire()"></i>
+          <span class="title">经验要求</span>
+          <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveExpRequire(expItems[exp])"></i>
+        </div>
+
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="row" style="padding: 0;">
+          <div class="col col-100" style="padding: 0;">
+            <ion-scroll delegate-handle="scrollExp" on-scroll="myMoveExp()" class="scroll-left" scrollbar-y="false" scrollbar-x="false" style="height:176px;overflow-y: auto">
+              <ion-list class="exp-items">
+                <ion-item ng-repeat="expItem in expItems">
+                  <span style="font-size: 13px;">{{expItem}}</span>
+                </ion-item>
+              </ion-list>
+            </ion-scroll>
+          </div>
+        </div>
+      </ion-popover-view>
+    </script>
+
+    <!--学历要求 浮动框-->
+    <script id="eduRequire.html" type="text/ng-template">
+      <ion-popover-view class="expRequire">
+        <div class="salary-bar">
+          <i class="icon ion-ios-close-empty" ng-click="closeEduRequire()"></i>
+          <span class="title">学历要求</span>
+          <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveEduRequire(eduItems[edu])"></i>
+        </div>
+
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="row" style="padding: 0;">
+          <div class="col col-100" style="padding: 0;">
+            <ion-scroll delegate-handle="scrollEdu" on-scroll="myMoveEdu()" class="scroll-left" scrollbar-y="false" scrollbar-x="false" style="height:176px;overflow-y: auto">
+              <ion-list class="exp-items">
+                <ion-item ng-repeat="eduItem in eduItems">
+                  <span style="font-size: 13px;">{{eduItem}}</span>
+                </ion-item>
+              </ion-list>
+            </ion-scroll>
+          </div>
+        </div>
+      </ion-popover-view>
+    </script>
+
+    <!--工作城市 浮动框-->
+    <script id="jobCity.html" type="text/ng-template">
+      <ion-popover-view class="expRequire">
+        <ion-header-bar class="salary-bar">
+          <i class="icon ion-ios-close-empty" ng-click="closeJobCity()"></i>
+          <span class="title">选择城市</span>
+          <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveJobCity()"></i>
+        </ion-header-bar>
+        <ion-content style="margin: 0;padding: 0;padding-top:58px;" scrollbar-y="false">
+        </ion-content>
+      </ion-popover-view>
+    </script>
+
+
+    <!--工作地点 模态框-->
+    <script id="jobLocation.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-content style="background: #e7eff0;">
+          <div class="fabu-bar bar">
+            <i class="icon ion-ios-close-empty" ng-click="closeJobLocation()" style="z-index: 100"></i>
+            <span class="title">工作地点</span>
+            <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveJobLocation(job_location)"></i>
+          </div>
+          <div class="jobName">
+            <div class="blank-line" style="height: 28px;"></div>
+            <p><span>0</span>/20</p>
+            <label for="location"></label>
+            <input type="text" id="location" ng-model="job_location" value="{{ job_info.job_location }}" />
+            <p class="warning" >不能填写QQ、微信、电话等联系方式,以及特殊符号</p>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+    <!--职位描述 模态框-->
+    <script id="jobDes.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-content style="background: #e7eff0;">
+          <div class="fabu-bar bar">
+            <i class="icon ion-ios-close-empty" ng-click="showDes($event)" style="z-index: 100"></i>
+            <span class="title">职位描述</span>
+            <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveJobDes(job_des)"></i>
+          </div>
+          <div class="jobDes jobName">
+            <div class="blank-line" style="height: 28px;"></div>
+            <p><span>0</span>/5000</p>
+            <label for="des"></label>
+            <textarea rows="10" id="des" ng-model="job_des">{{ job_info.job_des }}</textarea>
+            <p class="warning" >不能填写QQ、微信、电话等联系方式,以及特殊符号</p>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+    <!--职位描述中的提示 浮动框-->
+    <script id="desWarning.html" type="text/ng-template">
+      <ion-popover-view class="myPopover" style="height: 150px;">
+        <ion-content>
+          <div class="pop-tips">
+            <div class="circle"><span>!</span></div>
+            <p>内容尚未保存，确认放弃？</p>
+            <button class="button button-small button1" ng-click="closeDes()">
+              取消
+            </button>
+            <button class="button button-small button2" ng-click="ensureDes()">
+              确认
+            </button>
+          </div>
+        </ion-content>
+      </ion-popover-view>
+
+    </script>
   </ion-content>
 </ion-view>
