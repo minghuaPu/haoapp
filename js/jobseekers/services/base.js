@@ -217,7 +217,7 @@ angular.module('jobseekers.services', [])
 		return {
 			//加载数据
 			load: function() {
-				return $http.get(location.origin + '/haoapp/resume.json')
+				return $http.get('resume.json')
 					.then(function(response) {
 						return response['data'];
 					})
