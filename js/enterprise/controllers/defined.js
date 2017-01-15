@@ -1,6 +1,36 @@
 angular.module('enterprise.controllers', [])
 
 .controller('ExpertCtrl', function($scope, $ionicModal, $ionicPopover, $state, $ionicViewSwitcher,$http,$window,$ionicScrollDelegate,$rootScope,ENV) {
+
+  var vm=$scope.vm={};
+  vm.cb = function () {
+    console.log(vm.CityPickData1.areaData);
+  };
+  //例1
+  vm.CityPickData1 = {
+    areaData: [],
+    backdrop: true,
+    backdropClickToClose: true,
+    defaultAreaData: ['江苏', '无锡', '江阴市'],
+    buttonClicked: function () {
+      vm.cb()
+    },
+    tag: '-'
+    // iconClass: 'ion-location'
+    // title: '工作城市：'
+  };
+
+  vm.change = function () {
+    console.log('change');
+    vm.CityPickData4.areaData = ['上海', '徐汇区']
+  };
+  vm.sync = function () {
+    console.log('sync');
+    vm.CityPickData4.areaData = vm.CityPickData2.areaData
+  };
+
+
+
   // 发布职位
   //模态框
   $ionicModal.fromTemplateUrl('publish_job.html', {
@@ -16,7 +46,7 @@ angular.module('enterprise.controllers', [])
   $scope.closeModal = function () {
     $scope.popover.hide();
     $scope.modal.hide();
-
+    // localStorage.clear();
   };
   // 浮动框
   $ionicPopover.fromTemplateUrl('my-popover.html', {
@@ -146,7 +176,10 @@ angular.module('enterprise.controllers', [])
   $scope.saveSalaryRange = function (salary_range) {
     // salary_range=$rootScope.salary1+'k - '+$rootScope.salary2+'k';
     // 对象直接点添加属性
+    // console.log(localStorage);
     $scope.job_info.job_salary=salary_range;
+    // console.log($scope.job_info.job_salary);
+    // console.log($scope.job_info);
     // stringify()用于从一个对象解析出字符串
     localStorage.setItem('job_info', JSON.stringify($scope.job_info));
     console.log(localStorage);

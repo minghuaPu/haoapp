@@ -22,6 +22,10 @@
 		<link href="css/jobseekers/animate.css" rel="stylesheet">
 
 		<link rel="stylesheet" href="css/enterprise/style.css">
+
+    <!--城市三级联动-->
+    <link rel="stylesheet" href="lib/ionic-citypicker/src/style/ionic-citypicker.css">
+
 		<!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -49,14 +53,15 @@
 		<script src="js/enterprise/controllers/defined.js"></script>
 		<script src="js/enterprise/controllers/job.js"></script>
 		<script src="js/enterprise/services/base.js"></script>
+    <script src="lib/ionic-citypicker/dist/ionic-citypicker.min.js"></script>
 
-		<!-- <script src="js/many.js"></script> -->
+    <!-- <script src="js/many.js"></script> -->
 
 	</head>
 
 	<body>
 
-		
+
 
 		<!-- The nav bar that will be updated as we navigate between views.-->
 		<div id="enterprise" ng-app="enterprise">
@@ -80,5 +85,4 @@
 
 		</div>
 	</body>
-
 </html>

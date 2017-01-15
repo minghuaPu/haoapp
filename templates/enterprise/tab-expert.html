@@ -97,11 +97,12 @@
               </a>
 
               <div class="blank-line"></div>
-              <a href="#" class="item item-icon-right" ng-click="job_City()">
+              <a href="#" class="item item-icon-right">
                 <span class="item-workCity">
                   工作城市
                 </span>
-                <span class="item-details">北京</span>
+                <ionic-city-picker options='vm.CityPickData1' style="position: absolute;top: 0;left: 0;;width: 100%;"></ionic-city-picker>
+                <!--<span class="item-details">{{vm.CityPickData1.areaData}}</span>-->
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
               <a href="#" class="item item-icon-right" ng-click="job_Location()">
@@ -393,7 +394,19 @@
           <span class="title">选择城市</span>
           <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveJobCity()"></i>
         </ion-header-bar>
-        <ion-content style="margin: 0;padding: 0;padding-top:58px;" scrollbar-y="false">
+        <ion-content>
+          <!--<ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>-->
+          <!--<div class="button-box">-->
+            <!--<div class="button-whole">-->
+              <!--<div class="button button-defined" ng-click="vm.change()">-->
+                <!--修改城市-->
+              <!--</div>-->
+              <!--<div class="button button-defined" ng-click="vm.sync()">-->
+                <!--同步{{vm.CityPickData2.areaData}}-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--</div>-->
         </ion-content>
       </ion-popover-view>
     </script>
@@ -455,7 +468,6 @@
           </div>
         </ion-content>
       </ion-popover-view>
-
     </script>
   </ion-content>
 </ion-view>

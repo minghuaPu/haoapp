@@ -129,6 +129,7 @@
   font-size:18px;
   color:#52cac1;
   right: 0;
+  z-index: 10;
 }
 .publish_content .publish_warning {
   font-size: 12px;
@@ -495,8 +496,10 @@ button.fabu {
   position: relative;
   top:4px;
 }
-
-
+/*工作城市*/
+.item-workCity{
+  z-index: 10;
+}
 /*----工作地点-----*/
 
 /*----职位描述-----*/
