@@ -1,0 +1,19 @@
+<ion-view view-title="找工作" >
+
+  <ion-content on-swipe-left="onSwipeLeft()" on-swipe-right="onSwipeRight()">
+<ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+ 
+    <ul class="work_box">
+    
+      <li ng-repeat="item in items" >
+      <ion-item href="#/tab/work-detail">
+        <div class="money">30k-40k</div>
+        <div class="caree_name">  {{item.fName}}  | CTO</div>
+        <div>技术好，人好。</div></ion-item>
+      </li>
+ 
+ 
+    </ul> 
+  </ion-content>
+
+</ion-view>

@@ -26,16 +26,16 @@ angular.module('jobseekers.controllers')
 		$scope.add = function() {
 			$scope.modal.show();
 			$scope.b = {
-				name: '',
-				intro: '',
-				sex: '',
-				birth: '',
-				degree: '',
-				working: '',
-				residence: '',
-				mobile: '',
-				email: '',
-				status: ''
+				nickname: '',
+				peculiarity: '',
+				sex: '男',
+				birth: '90后',
+				top_edu: '本科',
+				work_years: '1-3年',
+				current_city: '广州',
+				phone: '',
+				e_mail: '',
+				current_status: '目前正在找工作'
 			}
 		}
 		$scope.save = function() {
@@ -56,10 +56,10 @@ angular.module('jobseekers.controllers')
 		$scope.add = function() {
 			$scope.modal.show();
 			$scope.j = {
-				working: '',
-				company: '',
-				position: '',
-				content: ''
+				working_time: '',
+				re_company_name: '',
+				job_title: '',
+				job_description: ''
 			}
 		}
 		$scope.save = function() {
@@ -87,9 +87,9 @@ angular.module('jobseekers.controllers')
 			$scope.add = function() {
 				$scope.modal.show();
 				$scope.e = {
-					grad: '',
-					school: '',
-					degree: '',
+					graduated: '2017',
+					school_name: '',
+					degree: '本科',
 					major: ''
 				}
 			}
@@ -117,10 +117,10 @@ angular.module('jobseekers.controllers')
 		$scope.add = function() {
 			$scope.modal.show();
 			$scope.c = {
-				position: '',
-				type: '',
-				city: '',
-				wages: ''
+				expected_position: '',
+				job_type: '全职',
+				expected_location: '广州',
+				expected_monthly_income: '5k-10k'
 			}
 		}
 		$scope.save = function() {
