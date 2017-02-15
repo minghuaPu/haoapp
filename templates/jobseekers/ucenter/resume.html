@@ -7,10 +7,11 @@
 			<div class="padding-vertical">添加头像</div>
 			<aside class="avatar text-center dark">
 				<span class="avatar-add" ng-click="avatar()">
-						<img class="avatar-img" src="img/jobseekers/u-avatar.png"><br>点击更换
-					</span>
+					<img class="avatar-img" src="img/jobseekers/u-avatar.png">
+					<div>点击更换</div>
+				</span>
 			</aside>
-
+			
 			<!-- 简历基本信息 -->
 			<div class="padding-vertical">基本信息</div>
 			<article ng-controller="resumeBasic">
@@ -151,7 +152,7 @@
 						</div>
 					</div>
 				</aside>
-				<button class="add" ng-click="add()" ng-hide="jobexp">+ 添加工作经历</button>
+				<button class="add" ng-click="add()">+ 添加工作经历</button>
 			</article>
 			<!-- 工作经历模版 -->
 			<script id="jobexp-modal.html" type="text/ng-template">
@@ -203,7 +204,7 @@
 						</div>
 					</div>
 				</aside>
-				<button class="add" ng-click="add()" ng-hide="eduexp">+ 添加教育经历</button>
+				<button class="add" ng-click="add()">+ 添加教育经历</button>
 			</article>
 			<!-- 教育经历模版 -->
 			<script id="eduexp-modal.html" type="text/ng-template">

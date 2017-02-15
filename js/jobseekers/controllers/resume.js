@@ -1,18 +1,13 @@
 angular.module('jobseekers.controllers')
 	//简历基本信息
-	.controller('resumeBasic', function($scope, resume, $rootScope, $ionicModal) {
+	.controller('resumeBasic', function($scope, resume, $ionicModal) {
+		resume.load();
 		$scope.avatar = function() {
 			alert("上传头像")
 		}
 		$scope.doRefresh = function() {
-			resume.load().then(function(data) {
-				$rootScope.user = data['user'];
-				$rootScope.basic = data['basic'];
-				$rootScope.jobexp = data['jobexp'];
-				$rootScope.eduexp = data['eduexp'];
-				$rootScope.career = data['career'];
-				$scope.$broadcast('scroll.refreshComplete');
-			})
+			resume.load();
+			$scope.$broadcast('scroll.refreshComplete')
 		}
 		$ionicModal.fromTemplateUrl('basic-modal.html', {
 			scope: $scope
@@ -39,7 +34,8 @@ angular.module('jobseekers.controllers')
 			}
 		}
 		$scope.save = function() {
-			resume.save('basic', $scope.b)
+			resume.save('basic', $scope.b);
+			$scope.modal.hide()
 		}
 	})
 	//简历工作经历
@@ -63,12 +59,14 @@ angular.module('jobseekers.controllers')
 			}
 		}
 		$scope.save = function() {
-			resume.save('jobexp', $scope.j)
+			resume.save('experience', $scope.j);
+			$scope.jobexp.push($scope.j);
+			$scope.modal.hide()
 		}
 		$scope.remove = function(jobexp) {
 			if(confirm("是否删除！")) {
 				$scope.jobexp.splice($scope.jobexp.indexOf(jobexp), 1);
-				resume.remove('jobexp', jobexp)
+				resume.remove('experience', jobexp)
 			}
 		}
 	})
@@ -94,12 +92,14 @@ angular.module('jobseekers.controllers')
 				}
 			}
 			$scope.save = function() {
-				resume.save('eduexp', $scope.e)
+				resume.save('education', $scope.e);
+				$scope.eduexp.push($scope.e);
+				$scope.modal.hide()
 			}
 			$scope.remove = function(eduexp) {
 				if(confirm("是否删除！")) {
 					$scope.eduexp.splice($scope.eduexp.indexOf(eduexp), 1);
-					resume.remove('eduexp', eduexp)
+					resume.remove('education', eduexp)
 				}
 			}
 		})
@@ -124,6 +124,7 @@ angular.module('jobseekers.controllers')
 			}
 		}
 		$scope.save = function() {
-			resume.save('career', $scope.c)
+			resume.save('prefered', $scope.c);
+			$scope.modal.hide()
 		}
 	});
