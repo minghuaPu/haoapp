@@ -1,63 +1,19 @@
 angular.module('jobseekers.controllers')
 	//简历基本信息
-	.controller('resumeBasic', function($scope, service, $ionicModal) {
-
-
+	.controller('resumeBasic', function($scope, resume, $rootScope, $ionicModal) {
 		$scope.avatar = function() {
 			alert("上传头像")
 		}
 		$scope.doRefresh = function() {
-			$http.get(location.href)
-				.success(function(data) {
-					console.log(data)
-				})
-				.finally(function() {
-					$scope.$broadcast('scroll.refreshComplete');
-				})
+			resume.load().then(function(data) {
+				$rootScope.user = data['user'];
+				$rootScope.basic = data['basic'];
+				$rootScope.jobexp = data['jobexp'];
+				$rootScope.eduexp = data['eduexp'];
+				$rootScope.career = data['career'];
+				$scope.$broadcast('scroll.refreshComplete');
+			})
 		}
-		service.load().then(function(response) {
-			//测试数据
-			$scope.basic = [{
-				name: '林国胜',
-				intro: '一句话',
-				sex: '男',
-				birth: '90后',
-				degree: '大专',
-				working: '应届毕业生',
-				residence: '广州',
-				mobile: '13226267239',
-				email: '648253615@qq.com'
-			}];
-			$scope.jobexp = [{
-				working: '2016',
-				company: '源酷创意',
-				position: 'Web前端',
-				content: '工作内容'
-			}, {
-				working: '2017',
-				company: '源酷创意1',
-				position: 'Web前端1',
-				content: '工作内容1'
-			}];
-			$scope.eduexp = [{
-				grad: '2016',
-				school: '源酷大学',
-				degree: '大专',
-				major: '软件技术'
-			}, {
-				grad: '2017',
-				school: '源酷大学1',
-				degree: '本科',
-				major: '软件技术1'
-			}];
-			$scope.career = [{
-				position: 'Web前端',
-				type: '全职',
-				city: '广州',
-				wages: '5k-10k'
-			}]
-		})
-
 		$ionicModal.fromTemplateUrl('basic-modal.html', {
 			scope: $scope
 		}).then(function(modal) {
@@ -78,15 +34,16 @@ angular.module('jobseekers.controllers')
 				working: '',
 				residence: '',
 				mobile: '',
-				email: ''
+				email: '',
+				status: ''
 			}
 		}
 		$scope.save = function() {
-			service.save('basic', $scope.b)
+			resume.save('basic', $scope.b)
 		}
 	})
 	//简历工作经历
-	.controller('resumeJobexp', function($scope, service, $ionicModal) {
+	.controller('resumeJobexp', function($scope, resume, $ionicModal) {
 		$ionicModal.fromTemplateUrl('jobexp-modal.html', {
 			scope: $scope
 		}).then(function(modal) {
@@ -106,16 +63,18 @@ angular.module('jobseekers.controllers')
 			}
 		}
 		$scope.save = function() {
-			service.save('jobexp', $scope.j)
+			resume.save('jobexp', $scope.j)
 		}
 		$scope.remove = function(jobexp) {
-			$scope.jobexp.splice($scope.jobexp.indexOf(jobexp), 1);
-			service.remove('jobexp', jobexp)
+			if(confirm("是否删除！")) {
+				$scope.jobexp.splice($scope.jobexp.indexOf(jobexp), 1);
+				resume.remove('jobexp', jobexp)
+			}
 		}
 	})
 	//简历教育经历
 	.controller('resumeEduexp',
-		function($scope, service, $ionicModal) {
+		function($scope, resume, $ionicModal) {
 			$ionicModal.fromTemplateUrl('eduexp-modal.html', {
 				scope: $scope
 			}).then(function(modal) {
@@ -135,15 +94,17 @@ angular.module('jobseekers.controllers')
 				}
 			}
 			$scope.save = function() {
-				service.save('eduexp', $scope.e)
+				resume.save('eduexp', $scope.e)
 			}
 			$scope.remove = function(eduexp) {
-				$scope.eduexp.splice($scope.eduexp.indexOf(eduexp), 1);
-				service.remove('eduexp', eduexp)
+				if(confirm("是否删除！")) {
+					$scope.eduexp.splice($scope.eduexp.indexOf(eduexp), 1);
+					resume.remove('eduexp', eduexp)
+				}
 			}
 		})
 	//简历期望工作
-	.controller('resumeCareer', function($scope, service, $ionicModal) {
+	.controller('resumeCareer', function($scope, resume, $ionicModal) {
 		$ionicModal.fromTemplateUrl('career-modal.html', {
 			scope: $scope
 		}).then(function(modal) {
@@ -163,6 +124,6 @@ angular.module('jobseekers.controllers')
 			}
 		}
 		$scope.save = function() {
-			service.save('career', $scope.c)
+			resume.save('career', $scope.c)
 		}
 	});

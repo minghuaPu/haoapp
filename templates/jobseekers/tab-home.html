@@ -66,7 +66,7 @@
             {{item.education}}
           </span>
         </div>
-        <div class="row job_boss">   lily 产品总监</div>
+        <div class="row job_boss">   {{item.name}} {{item.job}}</div>
       </ion-item>
       
     </ion-list>
@@ -96,6 +96,10 @@
   <ion-popover-view class="index_propover">
     
     <ion-content>
+      <ul>
+        <li>推荐</li>
+        <li>最新</li>
+      </ul>
        
     </ion-content>
   </ion-popover-view>

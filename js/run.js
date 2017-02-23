@@ -50,53 +50,50 @@ angular.module('jobseekers', ['ionic', 'jobseekers.config', 'jobseekers.controll
 	});
 });
 
+angular.module('enterprise', ['ionic', 'enterprise.config', 'enterprise.controllers', 'enterprise.services'])
 
+.run(function($ionicPlatform, $rootScope, $state, Auth, ENV) {
+	// console.log(ENV);
+	$rootScope.env = ENV;
+	$ionicPlatform.ready(function() {
+		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+		// for form inputs)
+		if(window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+			cordova.plugins.Keyboard.disableScroll(true);
 
-angular.module('enterprise', ['ionic','enterprise.config', 'enterprise.controllers', 'enterprise.services'])
+		}
+		if(window.StatusBar) {
+			// org.apache.cordova.statusbar required
+			StatusBar.styleDefault();
+		}
 
-.run(function($ionicPlatform,$rootScope,$state,Auth,ENV) {
-  // console.log(ENV);
- $rootScope.env=ENV;
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+		$rootScope.$on('$stateChangeStart', function(event, next) {
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
+			if(angular.isDefined(next.data)) {
+				var roles = next.data.authorizedRoles;
+				if(!Auth.isAuthenticated()) {
+					console.log('还未登录');
+					event.preventDefault();
+					$state.go('login');
 
-    $rootScope.$on('$stateChangeStart', function(event, next) {
+				} else if(Auth.isAuthorized(roles)) {
+					console.log('用户角色在列表中');
+				}
 
-        if (angular.isDefined(next.data)) {
-            var roles = next.data.authorizedRoles;
-            if (!Auth.isAuthenticated()) {
-                console.log('还未登录');
-                event.preventDefault();
-                $state.go('login');
+				// else {
+				//     console.log('用户角色没有在列表中')
+				//     event.preventDefault();
+				//     $state.go('login');
+				// }
+			}
+		});
 
-            } else if (Auth.isAuthorized(roles)) {
-                console.log('用户角色在列表中');
-            }
+		$rootScope.logout = function() {
+			Auth.logout();
+		};
 
-            // else {
-            //     console.log('用户角色没有在列表中')
-            //     event.preventDefault();
-            //     $state.go('login');
-            // }
-        }
-    });
-
-    $rootScope.logout = function(){
-      Auth.logout();
-    };
-
-
-  });
+	});
 })
 
 //   .directive('modalBox', [function() {
@@ -111,14 +108,13 @@ angular.module('enterprise', ['ionic','enterprise.config', 'enterprise.controlle
 //         controller: function($scope, $ionicModal, $ionicPopover,$attrs){
 //             // 发布职位
 //             //模态框
-           
+
 //             $ionicModal.fromTemplateUrl('publish_job.html', {
 //               scope: $scope
 //             }).then(function (modal) {
 //               $scope.modal = modal;
 //             });
 
-            
 //             // 显示发布职位的页面
 //             $scope.publish_job = function () {
 //               $scope.modal.show();

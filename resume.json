@@ -1,0 +1,71 @@
+{
+	"user": [
+		{
+			"uid": "1",
+			"username": "admin",
+			"password": "21232f297a57a5a743894a0e4a801fc3",
+			"photo": "/resume/aoshi-master./Public/upload/resume_.png",
+			"create_time": "2017-01-06 06:01:36"
+		}
+	],
+	"basic": [
+		{
+			"rid": "1",
+			"name": "林国胜",
+			"intro": "一句话描述",
+			"sex": "男",
+			"birth": "90后",
+			"degree": "大专",
+			"working": "应届毕业生",
+			"residence": "广州",
+			"mobile": "13226267239",
+			"email": "648253615@qq.com",
+			"status": "我暂时不想找工作",
+			"uid": "1"
+		}
+	],
+	"jobexp": [
+		{
+			"jid": "1",
+			"working": "2016",
+			"company": "源酷创意1",
+			"position": "Web前端",
+			"content": "工作内容",
+			"uid": "1"
+		}, {
+			"jid": "2",
+			"working": "2017",
+			"company": "源酷创意2",
+			"position": "Web前端",
+			"content": "工作内容",
+			"uid": "1"
+		}
+	],
+	"eduexp": [
+		{
+			"eid": "1",
+			"grad": "2016",
+			"school": "源酷大学1",
+			"degree": "大专",
+			"major": "软件技术",
+			"uid": "1"
+		}, {
+			"eid": "2",
+			"grad": "2017",
+			"school": "源酷大学2",
+			"degree": "本科",
+			"major": "软件技术",
+			"uid": "1"
+		}
+	],
+	"career": [
+		{
+			"cid": "1",
+			"position": "Web前端",
+			"type": "全职",
+			"city": "广州",
+			"wages": "5k-10k",
+			"uid": "1"
+		}
+	]
+}

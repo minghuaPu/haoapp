@@ -1,10 +1,4 @@
-<ion-view title="简历">
-	<!-- 头部 -->
-	<ion-header-bar>
-		<button class="button button-clear icon-left ion-ios-arrow-left button-dark" ng-click="$ionicGoBack()"></button>
-		<h1 class="title">我的简历</h1>
-		<button class="button button-clear">预览</button>
-	</ion-header-bar>
+<ion-view title="我的简历">
 	<!-- 简历 -->
 	<ion-content>
 		<ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher>
@@ -122,6 +116,15 @@
 								<input ng-model="b.email"></input>
 							</li>
 							<li class="item">
+								<span>求职状态</span>
+								<select ng-model="b.status">
+									<option>我是应届毕业生</option>
+									<option>我暂时不想找工作</option>
+									<option>我目前已离职，可快速到岗</option>
+									<option>我目前正在职，正考虑换个新环境</option>
+								</select>
+							</li>
+							<li class="item">
 								<span>一句话描述</span>
 								<textarea ng-model="b.intro" rows="3"></textarea>
 							</li>
@@ -133,7 +136,7 @@
 			<!-- 简历工作经历 -->
 			<div class="padding-vertical">工作经历</div>
 			<article ng-controller="resumeJobexp">
-				<aside ng-show="jobexp">
+				<aside ng-show="jobexp[0]">
 					<div class="circle" ng-repeat="j in jobexp">
 						<div>
 							<span ng-bind="j.working"></span>
@@ -185,7 +188,7 @@
 			<!-- 简历教育经历 -->
 			<div class="padding-vertical">教育经历</div>
 			<article ng-controller="resumeEduexp">
-				<aside ng-show="eduexp">
+				<aside ng-show="eduexp[0]">
 					<div class="circle" ng-repeat="e in eduexp">
 						<div>
 							<span ng-bind="e.grad"></span>

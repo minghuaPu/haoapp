@@ -26,7 +26,7 @@ angular.module('jobseekers.controllers')
 
             Jobs.hasmore = response.data.length>0;
             $scope.job_lists=response.data;
-          //console.log($scope.job_lists);
+            console.log($scope.job_lists);
          
         })
 
@@ -113,4 +113,3 @@ angular.module('jobseekers.controllers')
          
         })
 });
-
