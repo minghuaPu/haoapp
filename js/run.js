@@ -23,30 +23,23 @@ angular.module('jobseekers', ['ionic', 'jobseekers.config', 'jobseekers.controll
 		}
 
 		$rootScope.$on('$stateChangeStart', function(event, next) {
-
 			if(angular.isDefined(next.data)) {
 				var roles = next.data.authorizedRoles;
+				/** 登录权限
 				if(!Auth.isAuthenticated()) {
 					console.log('还未登录');
 					event.preventDefault();
 					$state.go('login');
-
 				} else if(Auth.isAuthorized(roles)) {
 					console.log('用户角色在列表中');
 				}
-
-				// else {
-				//     console.log('用户角色没有在列表中')
-				//     event.preventDefault();
-				//     $state.go('login');
-				// }
+				*/
 			}
 		});
 
 		$rootScope.logout = function() {
 			Auth.logout();
 		};
-
 	});
 });
 

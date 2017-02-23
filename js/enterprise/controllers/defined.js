@@ -1,6 +1,10 @@
 angular.module('enterprise.controllers', [])
 
+<<<<<<< HEAD
 .controller('ExpertCtrl', function($scope, $ionicModal, $ionicPopover, $state, $ionicViewSwitcher,$http,$window,$ionicScrollDelegate,$ionicListDelegate,$rootScope,ENV) {
+=======
+.controller('ExpertCtrl', function($scope, $ionicModal, $ionicPopover, $state, $ionicViewSwitcher,$http,$window,$ionicScrollDelegate,$rootScope,ENV) {
+>>>>>>> 4bc404d2923abb99ed8636321b287fa808fa8814
 
   var vm=$scope.vm={};
   vm.cb = function () {
@@ -394,9 +398,13 @@ angular.module('enterprise.controllers', [])
     // salary_range=$rootScope.salary1+'k - '+$rootScope.salary2+'k';
     // 对象直接点添加属性
     // console.log(localStorage);
+<<<<<<< HEAD
     // $scope.job_info.job_salary=salary_range;
     $scope.job_info.salary1=$rootScope.salary1;
     $scope.job_info.salary2=$rootScope.salary2;
+=======
+    $scope.job_info.job_salary=salary_range;
+>>>>>>> 4bc404d2923abb99ed8636321b287fa808fa8814
     // console.log($scope.job_info.job_salary);
     // console.log($scope.job_info);
     // stringify()用于从一个对象解析出字符串

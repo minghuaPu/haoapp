@@ -549,7 +549,7 @@ a{
 .me >.list .item:nth-child(2) a {
 	padding: 10px 15px;
 	display: inline-block;
-	width: 50%;
+	width: 49.8%;
 	text-align: center;
 	text-decoration: none;
 }
