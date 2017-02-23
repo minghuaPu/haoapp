@@ -13,8 +13,12 @@
             <img src="{{env.ent_img_path}}/xiaomi.png" />
           </div>
           <div class="col col-45 fuli">
-            <h5>小米</h5>
+            <h5>{{ currentUser.user_name }} </h5>
             <p>免费认证 享VIP福利</p>
+            <a    ng-click="logout()">
+              <i class="icon ion-power"></i>退出
+              <i class="icon ion-ios-arrow-right"></i>
+            </a>
           </div>
           <div class="col col-25 col-offset-5 data">
             <a href="#">
@@ -28,7 +32,7 @@
 
       <div class="settings-content">
         <div class="row record-num">
-          <div class="col col-33">
+          <div class="col col-33" ng-click="show_zwgl()">
             <div class="right-line">
               <p class="num">0<sup><i class="icon ion-record"></i></sup></p>
               <p class="con">职位管理</p>
@@ -246,6 +250,21 @@
               </a>
             </div>
           </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+    <script id="zwgl.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-content>
+          <div class="fabu-bar bar">
+            <i class="icon ion-ios-close-empty" style="z-index: 100" ng-click="closezwgl()"></i>
+            <span class="title">职位管理</span>
+            <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click=""></i>
+          </div>
+          <ion-list>
+            <ion-item>fdds</ion-item>
+          </ion-list>
         </ion-content>
       </ion-modal-view>
     </script>

@@ -52,7 +52,7 @@ angular.module('enterprise.services', [])
 
 .service('Session', function() {
     this.create = function(user) {
-     
+
         this.user = user;
         this.userRole = user.userRole;
     };
@@ -77,7 +77,7 @@ angular.module('enterprise.services', [])
       Session.destroy();
       $window.sessionStorage.removeItem("userInfo");
         $state.go('login');
-    }
+    };
 
     return authService;
 }])

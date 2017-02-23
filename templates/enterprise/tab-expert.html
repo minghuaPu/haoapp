@@ -48,6 +48,7 @@
                   公司信息
                 </span>
                 <i class="icon ion-ios-arrow-right"></i>
+                <span class="item-details">源酷信息科技有限公司</span>
               </a>
 
               <div class="blank-line"></div>
@@ -57,6 +58,7 @@
                   职位类型
                 </span>
                 <i class="icon ion-ios-arrow-right"></i>
+                <span class="item-details">{{job_info.job_type}}</span>
               </a>
 
               <a href="#" class="item item-icon-right" ng-click="job_Name()">
@@ -71,13 +73,14 @@
                   技能要求
                 </span>
                 <i class="icon ion-ios-arrow-right"></i>
+                <span class="item-details">已选{{ count }}个标签</span>
               </a>
               <a href="#" class="item item-icon-right" ng-click="salary_Range($event)">
                 <span class="item-salaryRange">
                   薪资范围
                 </span>
                 <i class="icon ion-ios-arrow-right"></i>
-                <span class="item-details">{{ job_info.job_salary }}</span>
+                <span class="item-details">{{ job_info.salary1 }}k - {{job_info.salary2}}k</span>
               </a>
 
               <div class="blank-line"></div>
@@ -97,11 +100,12 @@
               </a>
 
               <div class="blank-line"></div>
-              <a href="#" class="item item-icon-right" ng-click="job_City()">
+              <a href="#" class="item item-icon-right">
                 <span class="item-workCity">
                   工作城市
                 </span>
-                <span class="item-details">北京</span>
+                <ionic-city-picker options='vm.CityPickData1' style="position: absolute;top: 0;left: 0;;width: 100%;"></ionic-city-picker>
+                <!--<span class="item-details">{{vm.CityPickData1.areaData}}</span>-->
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
               <a href="#" class="item item-icon-right" ng-click="job_Location()">
@@ -115,11 +119,12 @@
                 <span class="item-jobDes">
                   职位描述
                 </span>
-                <span class="item-details">{{job_info.job_des}}</span>
+                  <i class="icon ion-checkmark-circled" id="hasDes" style="position: absolute;right:16px;opacity:0;"></i>
                 <i class="icon ion-ios-arrow-right"></i>
               </a>
-
-            </div>
+              <!--<label for="checkDes"></label>-->
+              <!--<input type="checkbox" ng-model="hasDes" ng-init="hasDes=true" id="checkDes"/>-->
+            <!--</div>-->
             <div class="publish_warning">
               <i class="icon ion-android-alert"></i>
               <span>所有职位均有专人审核，禁止发布手机兼职，淘宝兼职等职位！</span>
@@ -166,7 +171,7 @@
         <ion-content>
           <div class="fabupc">
             <img src="{{ env.ent_img_path }}/fabupc.png" />
-            <!--{{env.ent_img_path}}/fabupc.png-->
+
             <p>第一步:用电脑浏览器打开网址:<br/>sao.XX.com</p>
 
           </div>
@@ -229,7 +234,7 @@
           <h1 class="title">职位类型</h1>
           <!--<i class="icon ion-ios-help-empty"></i>-->
         </ion-header-bar>
-        <ion-content style="background: #e7eff0;">
+        <ion-content style="background: #e7eff0;top:55px;">
           <div class="jobType compInfo">
             <div class="input-box">
               <label for="searchType">
@@ -240,7 +245,7 @@
             </div>
 
             <div class="list list-defined">
-              <a href="#" class="item">
+              <a href="#" class="item" ng-click="jiShu($event)">
                 <span class="item-info">
                   技术
                 </span>
@@ -255,7 +260,188 @@
         </ion-content>
       </ion-modal-view>
     </script>
+    <!--技术-->
+    <script id="jiShu.html" type="text/ng-template">
+      <ion-popover-view class="jiShu">
+        <div class="skill">
+          <div class="row" style="padding: 0;">
+            <div class="col col-50" style="padding: 0;">
+              <ion-scroll scrollbar-y="true" style="height: calc(100% - 140px);overflow-y: auto;">
+                <ion-list class="skillContents">
+                  <ion-item ng-repeat="json in arr" class="item {{now==$index?'act':''}}" ng-click="fn($index)">
+                    <span>{{json.name}}</span>
+                  </ion-item>
+                </ion-list>
+              </ion-scroll>
+            </div>
+            <div class="col col-50 skillRight" style="padding: 0;">
+              <!--<ion-list class="skillContents" ng-show="now==$index">-->
+                <!--<ion-item ng-repeat="hdkf_con in hdkf">-->
+                  <!--<span>{{hdkf_con}}</span>-->
+                <!--</ion-item>-->
+              <!--</ion-list>-->
+              <div class="item item-select" style="z-index: 3">
+                <select ng-model="hdkf" ng-change="gethdkf(hdkf)">
+                  <option selected="">Java</option>
+                  <option>PHP</option>
+                  <option>C++</option>
+                  <option>.NET</option>
+                  <option>Python</option>
+                  <option>C#</option>
+                  <option>数据挖掘</option>
+                  <option>Node.js</option>
+                  <option>Hadoop</option>
+                </select>
+              </div>
+              <div class="item item-select">
+                <select ng-model="ydkf" ng-change="getydkf(ydkf)">
+                  <option selected="">Android</option>
+                  <option>iOS</option>
+                  <option>Web前端</option>
+                  <option>U3D</option>
+                  <option>HTML5</option>
+                  <option>COCOS2DX</option>
+                  <option>JavaScript</option>
+                  <option>Flash</option>
+                  <option>WP</option>
+                </select>
+              </div>
+              <div class="item item-select">
+                <select ng-model="qdkf" ng-change="getqdkf(qdkf)">
+                  <option selected="">web前端</option>
+                  <option>HTML5</option>
+                  <option>JavaScript</option>
+                  <option>Flash</option>
+                </select>
+              </div>
+              <div class="item item-select">
+                <select ng-model="cs" ng-change="getcs(cs)">
+                  <option selected="">测试工程师</option>
+                  <option>软件测试</option>
+                  <option>游戏测试</option>
+                  <option>功能测试</option>
+                  <option>自动化测试</option>
+                  <option>移动端测试</option>
+                  <option>性能测试</option>
+                  <option>测试开发</option>
+                  <option>硬件测试</option>
+                </select>
+              </div>
+              <div class="item item-select">
+                <select ng-model="xmgl" ng-change="getxmgl(xmgl)">
+                  <option selected="">项目经理</option>
+                  <option>项目助理</option>
+                  <option>项目主管</option>
+                  <option>项目专员</option>
+                  <option>实施工程师</option>
+                  <option>实施顾问</option>
+                  <option>需求分析师</option>
+                </select>
+              </div>
+              <div class="item item-select">
+                <select ng-model="yw" ng-change="getyw(yw)">
+                  <option selected="">运维工程师</option>
+                  <option>网络工程师</option>
+                  <option>IT技术支持</option>
+                  <option>系统工程师</option>
+                  <option>系统管理员</option>
+                  <option>网络安全</option>
+                  <option>运维开发工程师</option>
+                  <option>系统安全</option>
+                </select>
+              </div>
+              <div class="item item-select">
+                <select ng-model="gd" ng-change="getgd(gd)">
+                  <option selected="">技术总监</option>
+                  <option>技术经理</option>
+                  <option>架构师</option>
+                  <option>CTO</option>
+                  <option>技术合伙人</option>
+                  <option>测试经理</option>
+                  <option>运维总监</option>
+                </select>
+              </div>
+              <div class="item item-select">
+                <select ng-model="sj" ng-change="getsj(sj)">
+                  <option selected="">数据分析师</option>
+                  <option>数据挖掘</option>
+                  <option>Oracle</option>
+                  <option>数据开发</option>
+                  <option>MySQL</option>
+                  <option>数据处理工程师</option>
+                  <option>SQLServer</option>
+                  <option>ETLHive</option>
+                  <option>数据架构师</option>
+                  <option>DB2</option>
+                  <option>MongoDB</option>
+                </select>
+              </div>
 
+              <div class="item item-select">
+                <select ng-model="yjkf" ng-change="getyjkf(yjkf)">
+                  <option>嵌入式</option>
+                  <option>自动化</option>
+                  <option>硬件</option>
+                  <option>单片机</option>
+                  <option>电路设计</option>
+                  <option>模具设计</option>
+                  <option>FPGA开发</option>
+                  <option>PCB工艺</option>
+                  <option>系统集成</option>
+                  <option>ARM开发</option>
+                  <option>材料工程师</option>
+                  <option>射频工程师</option>
+                  <option>驱动开发</option>
+                  <option>DSP开发</option>
+                  <option>热传导</option>
+                  <option>精益工程师</option>
+                </select>
+              </div>
+              <div class="item item-select" ng-click="otherSkill()">
+                {{myJob || '其他职位名称'}}
+              </div>
+              <div class="item item-select">
+                <select ng-model="rjxs" ng-change="getrjxs(rjxs)">
+                  <option selected="">售前工程师</option>
+                  <option>售后工程师</option>
+                </select>
+              </div>
+              <div class="item item-select">
+                <select ng-model="tx" ng-change="gettx(tx)">
+                  <option selected="">通信技术工程师</option>
+                  <option>通信项目专员</option>
+                  <option>电信网络工程师</option>
+                  <option>移动通信工程师</option>
+                  <option>无线射频工程师</option>
+                  <option>通信项目经理</option>
+                  <option>数据通信工程师</option>
+                  <option>通信电源工程师</option>
+                  <option>通信测试工程师</option>
+                  <option>电信交换工程师</option>
+                  <option>有线传输工程师</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-popover-view>
+    </script>
+
+    <!--其他技术-->
+    <script id="other_Skill.html" type="text/ng-template">
+    <ion-modal-view class="otherSkill">
+      <ion-header-bar class="bar_defined">
+        <i class="icon ion-ios-arrow-left" ng-click="closeOtherSkill()"></i>
+        <h2 class="title">请输入职位名</h2>
+        <i class="icon ion-ios-checkmark-empty" ng-click="enterJobName()"></i>
+      </ion-header-bar>
+      <ion-content>
+        <label for="inputJobName">
+          <input type="text" id="inputJobName" placeholder="请输入职位名称" ng-model="myJob">
+        </label>
+      </ion-content>
+    </ion-modal-view>
+    </script>
     <!--职位名称 模态框-->
     <script id="jobName.html" type="text/ng-template">
       <ion-modal-view>
@@ -273,10 +459,10 @@
           </div>
           <div class="jobName">
             <div class="blank-line" style="height: 28px;"></div>
-            <p><span>0</span>/20</p>
+            <p><span>{{ num || 0 }}</span>/20</p>
             <label for="jobName"></label>
             <!--job_info.job_name 点 从localStorage出来的刷新才不消失-->
-            <input type="text" id="jobName" ng-model="job_name" value="{{ job_info.job_name }}" />
+            <input type="text" id="jobName" ng-model="job_name" value="{{ job_info.job_name }}" ng-change="numFn()"/>
             <p class="warning" >不能填写QQ、微信、电话等联系方式,以及特殊符号</p>
           </div>
         </ion-content>
@@ -290,7 +476,16 @@
           <div class="fabu-bar bar">
             <i class="icon ion-ios-arrow-left" ng-click="closeJobRequire()" style="z-index: 100"></i>
             <h1 class="title">技能要求</h1>
-            <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;"></i>
+            <i class="icon ion-ios-checkmark-empty" style="font-size: 45px;" ng-click="enterJobRequire(liItems[now])"></i>
+          </div>
+
+          <div class="tags">
+            <p>最多3个标签</p>
+            <ul>
+              <li ng-repeat="liItem in liItems" ng-click="skillFn($index)" class="tagItems {{now==$index}}">
+                {{liItem}}
+              </li>
+            </ul>
           </div>
         </ion-content>
       </ion-modal-view>
@@ -390,10 +585,22 @@
       <ion-popover-view class="expRequire">
         <ion-header-bar class="salary-bar">
           <i class="icon ion-ios-close-empty" ng-click="closeJobCity()"></i>
-          <span class="title">选择城市</span>
+          <span class="title" style="top:-5px;">选择城市</span>
           <i class="icon ion-ios-checkmark-empty" style="font-size: 40px;" ng-click="saveJobCity()"></i>
         </ion-header-bar>
-        <ion-content style="margin: 0;padding: 0;padding-top:58px;" scrollbar-y="false">
+        <ion-content>
+          <!--<ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>-->
+          <!--<div class="button-box">-->
+            <!--<div class="button-whole">-->
+              <!--<div class="button button-defined" ng-click="vm.change()">-->
+                <!--修改城市-->
+              <!--</div>-->
+              <!--<div class="button button-defined" ng-click="vm.sync()">-->
+                <!--同步{{vm.CityPickData2.areaData}}-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--</div>-->
         </ion-content>
       </ion-popover-view>
     </script>
@@ -410,9 +617,9 @@
           </div>
           <div class="jobName">
             <div class="blank-line" style="height: 28px;"></div>
-            <p><span>0</span>/20</p>
+            <p><span>{{ loc || 0 }}</span>/20</p>
             <label for="location"></label>
-            <input type="text" id="location" ng-model="job_location" value="{{ job_info.job_location }}" />
+            <input type="text" id="location" ng-model="job_location" value="{{ job_info.job_location }}" ng-change="numFn1()"/>
             <p class="warning" >不能填写QQ、微信、电话等联系方式,以及特殊符号</p>
           </div>
         </ion-content>
@@ -430,9 +637,9 @@
           </div>
           <div class="jobDes jobName">
             <div class="blank-line" style="height: 28px;"></div>
-            <p><span>0</span>/5000</p>
+            <p><span>{{ des || 0 }}</span>/5000</p>
             <label for="des"></label>
-            <textarea rows="10" id="des" ng-model="job_des">{{ job_info.job_des }}</textarea>
+            <textarea rows="10" id="des" ng-model="job_des" ng-change="numFn2()">{{ job_info.job_des }}</textarea>
             <p class="warning" >不能填写QQ、微信、电话等联系方式,以及特殊符号</p>
           </div>
         </ion-content>
@@ -455,7 +662,6 @@
           </div>
         </ion-content>
       </ion-popover-view>
-
     </script>
   </ion-content>
 </ion-view>
