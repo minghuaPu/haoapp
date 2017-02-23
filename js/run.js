@@ -23,34 +23,27 @@ angular.module('jobseekers', ['ionic', 'jobseekers.config', 'jobseekers.controll
 		}
 
 		$rootScope.$on('$stateChangeStart', function(event, next) {
-
 			if(angular.isDefined(next.data)) {
 				var roles = next.data.authorizedRoles;
+				/** 登录权限
 				if(!Auth.isAuthenticated()) {
 					console.log('还未登录');
 					event.preventDefault();
 					$state.go('login');
-
 				} else if(Auth.isAuthorized(roles)) {
 					console.log('用户角色在列表中');
 				}
-
-				// else {
-				//     console.log('用户角色没有在列表中')
-				//     event.preventDefault();
-				//     $state.go('login');
-				// }
+				*/
 			}
 		});
 
 		$rootScope.logout = function() {
 			Auth.logout();
 		};
-
 	});
 });
 
-angular.module('enterprise', ['ionic', 'enterprise.config', 'enterprise.controllers', 'enterprise.services'])
+angular.module('enterprise', ['ionic', 'enterprise.config', 'enterprise.controllers', 'enterprise.services','ionic-citypicker'])
 
 .run(function($ionicPlatform, $rootScope, $state, Auth, ENV) {
 	// console.log(ENV);
@@ -81,56 +74,21 @@ angular.module('enterprise', ['ionic', 'enterprise.config', 'enterprise.controll
 					console.log('用户角色在列表中');
 				}
 
-				// else {
-				//     console.log('用户角色没有在列表中')
-				//     event.preventDefault();
-				//     $state.go('login');
-				// }
+				else {
+				    console.log('用户角色没有在列表中');
+				    event.preventDefault();
+				    $state.go('login');
+				}
 			}
 		});
 
 		$rootScope.logout = function() {
-			Auth.logout();
-		};
+
+		 Auth.logout();
+
+    };
 
 	});
 })
 
-//   .directive('modalBox', [function() {
-//     return {
-//         restrict: 'E',
-//         transclude: true,
-//          scope : {
-//             htmlName : '=name'
-//         },
-//         templateUrl:'publish_job.html',
-//         replace:true,
-//         controller: function($scope, $ionicModal, $ionicPopover,$attrs){
-//             // 发布职位
-//             //模态框
-
-//             $ionicModal.fromTemplateUrl('publish_job.html', {
-//               scope: $scope
-//             }).then(function (modal) {
-//               $scope.modal = modal;
-//             });
-
-//             // 显示发布职位的页面
-//             $scope.publish_job = function () {
-//               $scope.modal.show();
-//                console.log($scope.htmlName);
-//             };
-//             // 隐藏发布职位的页面
-//             $scope.closeJobName = function () {
-//               $scope.popover.hide();
-//               $scope.modal.hide();
-
-//             }; 
-//         },
-//         link: function(scope, element, attrs) {
-//          // scope.info=attrs;
-//             // scope.items = JSON.parse(attrs.items);
-//         }
-//     }
-// }])
 ;

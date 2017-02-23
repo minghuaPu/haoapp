@@ -7,41 +7,42 @@
 			<div class="padding-vertical">添加头像</div>
 			<aside class="avatar text-center dark">
 				<span class="avatar-add" ng-click="avatar()">
-						<img class="avatar-img" src="img/jobseekers/u-avatar.png"><br>点击更换
-					</span>
+					<img class="avatar-img" src="img/jobseekers/u-avatar.png">
+					<div>点击更换</div>
+				</span>
 			</aside>
-
+			
 			<!-- 简历基本信息 -->
 			<div class="padding-vertical">基本信息</div>
 			<article ng-controller="resumeBasic">
 				<aside class="dark" ng-show="basic">
 					<div>姓 &nbsp; &nbsp; &nbsp; 名：
-						<span ng-bind="basic[0].name"></span>
+						<span ng-bind="basic[0].nickname"></span>
 						<span class="edit" ng-click="edit()">编辑</span>
 					</div>
 					<div>性 &nbsp; &nbsp; &nbsp; 别：
 						<span ng-bind="basic[0].sex"></span>
 					</div>
 					<div>最高学历：
-						<span ng-bind="basic[0].degree"></span>
+						<span ng-bind="basic[0].top_edu"></span>
 					</div>
 					<div>工作年限：
-						<span ng-bind="basic[0].working"></span>
+						<span ng-bind="basic[0].work_years"></span>
 					</div>
 					<div>出生年份：
 						<span ng-bind="basic[0].birth"></span>
 					</div>
 					<div>所在城市：
-						<span ng-bind="basic[0].residence"></span>
+						<span ng-bind="basic[0].current_city"></span>
 					</div>
 					<div>联系电话：
-						<span ng-bind="basic[0].mobile"></span>
+						<span ng-bind="basic[0].phone"></span>
 					</div>
 					<div>联系邮箱：
-						<span ng-bind="basic[0].email"></span>
+						<span ng-bind="basic[0].e_mail"></span>
 					</div>
 					<div>一句话描述：
-						<span ng-bind="basic[0].intro"></span>
+						<span ng-bind="basic[0].peculiarity"></span>
 					</div>
 				</aside>
 				<button class="add" ng-click="add()" ng-hide="basic">+ 添加基本信息</button>
@@ -58,7 +59,7 @@
 						<ul class="list padding-top">
 							<li class="item">
 								<span>姓 &nbsp; &nbsp; &nbsp; &nbsp;名</span>
-								<input ng-model="b.name"></input>
+								<input ng-model="b.nickname"></input>
 							</li>
 							<li class="item">
 								<span>性 &nbsp; &nbsp; &nbsp; &nbsp;别</span>
@@ -69,7 +70,7 @@
 							</li>
 							<li class="item">
 								<span>最高学历</span>
-								<select ng-model="b.degree">
+								<select ng-model="b.top_edu">
 									<option>大专</option>
 									<option>本科</option>
 									<option>硕士</option>
@@ -79,7 +80,7 @@
 							</li>
 							<li class="item">
 								<span>工作年限</span>
-								<select ng-model="b.working">
+								<select ng-model="b.work_years">
 									<option>应届毕业生</option>
 									<option>1-3年</option>
 									<option>3-5年</option>
@@ -98,7 +99,7 @@
 							</li>
 							<li class="item">
 								<span>所在城市</span>
-								<select ng-model="b.residence">
+								<select ng-model="b.current_city">
 									<option>北京</option>
 									<option>上海</option>
 									<option>广州</option>
@@ -109,24 +110,23 @@
 							</li>
 							<li class="item">
 								<span>联系电话</span>
-								<input ng-model="b.mobile"></input>
+								<input ng-model="b.phone"></input>
 							</li>
 							<li class="item">
 								<span>联系邮箱</span>
-								<input ng-model="b.email"></input>
+								<input ng-model="b.e_mail"></input>
 							</li>
 							<li class="item">
 								<span>求职状态</span>
-								<select ng-model="b.status">
-									<option>我是应届毕业生</option>
-									<option>我暂时不想找工作</option>
-									<option>我目前已离职，可快速到岗</option>
-									<option>我目前正在职，正考虑换个新环境</option>
+								<select ng-model="b.current_status">
+									<option>目前正在找工作</option>
+									<option>观望有好机会会考虑</option>
+									<option>我目前不想换工作</option>
 								</select>
 							</li>
 							<li class="item">
 								<span>一句话描述</span>
-								<textarea ng-model="b.intro" rows="3"></textarea>
+								<textarea ng-model="b.peculiarity" rows="3"></textarea>
 							</li>
 						</ul>
 					</ion-content>
@@ -139,20 +139,20 @@
 				<aside ng-show="jobexp[0]">
 					<div class="circle" ng-repeat="j in jobexp">
 						<div>
-							<span ng-bind="j.working"></span>
+							<span ng-bind="j.working_time"></span>
 							<span class="edit" ng-click="edit(j)">编辑</span>
 							<span class="edit" ng-click="remove(j)">删除</span>
 						</div>
 						<div>
-							<span ng-bind="j.company"></span> |
-							<span ng-bind="j.position"></span>
+							<span ng-bind="j.re_company_name"></span> |
+							<span ng-bind="j.job_title"></span>
 						</div>
 						<div>
-							<span class="dark" ng-bind="j.content"></span>
+							<span class="dark" ng-bind="j.job_description"></span>
 						</div>
 					</div>
 				</aside>
-				<button class="add" ng-click="add()" ng-hide="jobexp">+ 添加工作经历</button>
+				<button class="add" ng-click="add()">+ 添加工作经历</button>
 			</article>
 			<!-- 工作经历模版 -->
 			<script id="jobexp-modal.html" type="text/ng-template">
@@ -166,19 +166,19 @@
 						<ul class="list padding-top">
 							<li class="item">
 								<span>公司</span>
-								<input ng-model="j.company">
+								<input ng-model="j.re_company_name">
 							</li>
 							<li class="item">
 								<span>职位</span>
-								<input ng-model="j.position">
+								<input ng-model="j.job_title">
 							</li>
 							<li class="item">
 								<span>任职时间</span>
-								<input ng-model="j.working">
+								<input ng-model="j.working_time">
 							</li>
 							<li class="item">
 								<span>工作内容</span>
-								<input ng-model="j.content">
+								<input ng-model="j.job_description">
 							</li>
 						</ul>
 					</ion-content>
@@ -191,12 +191,12 @@
 				<aside ng-show="eduexp[0]">
 					<div class="circle" ng-repeat="e in eduexp">
 						<div>
-							<span ng-bind="e.grad"></span>
+							<span ng-bind="e.graduated"></span>年毕业
 							<span class="edit" ng-click="edit(e)">编辑</span>
 							<span class="edit" ng-click="remove(e)">删除</span>
 						</div>
 						<div>
-							<span ng-bind="e.school"></span>
+							<span ng-bind="e.school_name"></span>
 						</div>
 						<div class="dark">
 							<span ng-bind="e.degree"></span> |
@@ -204,7 +204,7 @@
 						</div>
 					</div>
 				</aside>
-				<button class="add" ng-click="add()" ng-hide="eduexp">+ 添加教育经历</button>
+				<button class="add" ng-click="add()">+ 添加教育经历</button>
 			</article>
 			<!-- 教育经历模版 -->
 			<script id="eduexp-modal.html" type="text/ng-template">
@@ -218,7 +218,7 @@
 						<ul class="list padding-top">
 							<li class="item">
 								<span>学校</span>
-								<input ng-model="e.school">
+								<input ng-model="e.school_name">
 							</li>
 							<li class="item">
 								<span>专业</span>
@@ -236,7 +236,7 @@
 							</li>
 							<li class="item">
 								<span>毕业时间</span>
-								<select ng-model="e.grad">
+								<select ng-model="e.graduated">
 									<option>2017</option>
 									<option>2016</option>
 									<option>2015</option>
@@ -267,13 +267,13 @@
 			<article ng-controller="resumeCareer">
 				<aside ng-show="career">
 					<div>
-						<span ng-bind="career[0].position"></span>
+						<span ng-bind="career[0].expected_position"></span>
 						<span class="edit" ng-click="edit()">编辑</span>
 					</div>
 					<div>
-						<span ng-bind="career[0].type"></span> |
-						<span ng-bind="career[0].city"></span> |
-						<span ng-bind="career[0].wages"></span>
+						<span ng-bind="career[0].job_type"></span> |
+						<span ng-bind="career[0].expected_location"></span> |
+						<span ng-bind="career[0].expected_monthly_income"></span>
 					</div>
 				</aside>
 				<button class="add" ng-click="add()" ng-hide="career">+ 添加期望工作</button>
@@ -291,11 +291,11 @@
 					<ul class="list padding-top">
 						<li class="item">
 							<span>职位</span>
-							<input ng-model="c.position">
+							<input ng-model="c.expected_position">
 						</li>
 						<li class="item">
 							<span>类型</span>
-							<select ng-model="c.type">
+							<select ng-model="c.job_type">
 								<option>无限</option>
 								<option>全职</option>
 								<option>兼职</option>
@@ -304,7 +304,7 @@
 						</li>
 						<li class="item">
 							<span>期望城市</span>
-							<select ng-model="c.city">
+							<select ng-model="c.expected_location">
 								<option>无限</option>
 								<option>北京</option>
 								<option>上海</option>
@@ -315,7 +315,7 @@
 						</li>
 						<li class="item">
 							<span>期望薪水</span>
-							<select ng-model="c.wages">
+							<select ng-model="c.expected_monthly_income">
 								<option>无限</option>
 								<option>5k以下</option>
 								<option>5k-10k</option>

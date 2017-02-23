@@ -3,7 +3,7 @@ angular.module('enterprise.controllers', [])
 .factory('PersonService', function($http){
   var BASE_URL = "http://api.randomuser.me/";
   var items = [];
- 
+
   return {
     GetFeed: function(){
       return $http.get('/').then(function(response){
@@ -37,11 +37,11 @@ angular.module('enterprise.controllers', [])
 
       $scope.show_search=function  () {
         $scope.modal.show();
-      }
+      };
       $scope.down_page=function  () {
           $state.go('tab.chats');
           $ionicViewSwitcher.nextDirection("forward");
-      }
+      };
       $scope.popover = $ionicPopover.fromTemplateUrl('my-popover.html', {
         scope: $scope
       });
@@ -66,61 +66,9 @@ angular.module('enterprise.controllers', [])
       $scope.share=function  () {
         Share.show();
       }
- 
-})
-
-
-.controller('LoginCtrl',function  ($scope,$rootScope,$state,$http,Session,$window) {
-    // $scope.user.password="admin";
-
-    // rootScope 可以在各个控制器使用
-   $scope.signIn = function  (user) {
-   
-          // 就是调用
-          // url http://localhost/thinkphp_5.0.2_full/public/user/login
-          // user_name和user_pwd 
-          // 返回json格式
-         // jquery ajax
-          $http({
-            method:"jsonp",
-            url:"http://localhost/thinkphp_5.0.2_full/public/user/login?callback=JSON_CALLBACK",
-            params:user
-            }).success(function(data){ 
-               if (data) {
-                $window.sessionStorage["userInfo"] = JSON.stringify(data);
-                $scope.login(data);
-                
-                }else{
-                  $scope.success="用户名或密码不正确";
-                }
-           });
-    
-
-      
-   }
-   $scope.hide_msg=function  () {
-      $scope.success="";
-   }
-
-   $scope.login = function(data) {
-     Session.create(data);
-      delete data.user_pwd;
-      $rootScope.currentUser = data;
-        $state.go('tab.home');
-  };
-  
-  // if a session exists for current user (page was refreshed)
-  // log him in again
-  if ($window.sessionStorage["userInfo"]) {
-    var credentials = JSON.parse($window.sessionStorage["userInfo"]);
-    // JSON.parse：把json字符串转换成json对象
-    
-    // JSON.stringify：把json对象转换成json字符串
-    $scope.login(credentials);
-  }
- 
 
 })
+
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -142,7 +90,7 @@ angular.module('enterprise.controllers', [])
   $scope.contacts = [
     { name: 'Gordon Freeman' },
     { name: 'Barney Calhoun' },
-    { name: 'Lamarr the Headcrab' },
+    { name: 'Lamarr the Headcrab' }
   ];
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
@@ -150,34 +98,34 @@ angular.module('enterprise.controllers', [])
   }).then(function(modal) {
     $scope.modal = modal;
   });
-  
 
-  
+
+
    $scope.showModel=function(info){
      $scope.newUser=info;
      $scope.modal.show();
-   }
-    $scope.createContact = function(u) {        
+   };
+    $scope.createContact = function(u) {
       $scope.msgs.push({ id: u.id ,name: u.name,lastText:u.lastText });
       $scope.modal.hide();
     };
-  
+
     $scope.data = {
       showDelete: false
     };
-    
-    $scope.edit = function(item) { 
+
+    $scope.edit = function(item) {
       $scope.showModel(Msgs.get(item.id));
     };
     $scope.share = function(item) {
       Share.show();
     };
-    
+
     $scope.moveItem = function(item, fromIndex, toIndex) {
       $scope.msgs.splice(fromIndex, 1);
       $scope.msgs.splice(toIndex, 0, item);
     };
-    
+
     $scope.onItemDelete = function(item) {
       $scope.msgs.splice($scope.msgs.indexOf(item), 1);
     };
@@ -190,21 +138,21 @@ angular.module('enterprise.controllers', [])
 
 .controller('WorkCtrl', function($scope, $timeout, PersonService) {
   $scope.items = [];
- 
+
   PersonService.GetFeed().then(function(items){
     $scope.items = items;
     console.log($scope.items);
   });
- 
+
   $scope.doRefresh = function() {
     PersonService.GetFeed().then(function(items){
       $scope.items = items.concat($scope.items);
- 
+
       //Stop the ion-refresher from spinning
       $scope.$broadcast('scroll.refreshComplete');
     });
   };
- 
+
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
@@ -215,7 +163,7 @@ angular.module('enterprise.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-  
+
   $scope.settings = {
     enableFriends: true
   };

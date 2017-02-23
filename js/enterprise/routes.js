@@ -63,6 +63,7 @@ angular.module('enterprise')
         url: '/me',
         views: {
           'tab-me': {
+            cache:true,
             templateUrl: 'templates/enterprise/tab-me.html',
             controller: 'MeCtrl'
           }

@@ -6,17 +6,17 @@
   <ion-content>
     <div class="row">
       <div class="col col-50 col-offset-25 photo-parent">
-        <img src="{{env.ent_img_path}}/../ben.png" alt=".." class="photo" >
+        <img src="{{env.ent_img_path}}/../ben.png" alt=".." class="photo" />
       </div>
     </div>
 
     <div class="list list-inset">
 
-      <form action="/" name="myForm" novalidate>
+      <form action="/" name="myForm" onsubmit="return false;">
 
         <label class="item item-input user">
           <i class="icon ion-person"></i>
-          <input type="text" placeholder="Username" ng-model="user.user_name" name="user" required>
+          <input ng-focus="hide_msg();" type="text" placeholder="Username" ng-model="user.user_name" name="user" required>
 
           <span style="color:#66cc33" class="ion-checkmark-round"
                 ng-show="myForm.user.$dirty && myForm.user.$valid"></span>
@@ -26,7 +26,7 @@
 
         <label class="item item-input password">
           <i class="icon ion-locked"></i>
-          <input type="password" placeholder="Password" ng-minlength="6" ng-maxlength="18" ng-model="user.user_pwd" name="password" required>
+          <input ng-focus="hide_msg();" type="password" placeholder="Password" ng-minlength="6" ng-maxlength="18" ng-model="user.user_pwd" name="password" required>
 
           <span style="color:#66cc33" class="ion-checkmark-round"
                 ng-show="myForm.password.$dirty && myForm.password.$valid"></span>
@@ -45,7 +45,7 @@
           </span>
           <button class="button button-full button-calm" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
   myForm.password.$dirty && myForm.password.$invalid" ng-click="signIn(user)">登陆</button>
-
+          <!--ng-click="signIn(user)"-->
           <p class="text-center">
             <a href="#/forgot-password">找回密码</a>
           </p>

@@ -11,10 +11,10 @@
         <label class="item item-input">
           <span class="input-label">密  码</span>
           <input ng-focus="hide_msg();" type="password" ng-minlength="6" ng-maxlength="12" ng-model="user.user_pwd" name="password" required>
-            
+
           </label>
 
-      </div>
+
       <div class="padding">
 
           <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
@@ -28,12 +28,13 @@
             </span>
         <button class="button button-block button-positive" ng-disabled="  myForm.user.$invalid ||
  myForm.password.$invalid" ng-click="signIn(user)">立即登录</button>
-  
+
         <p class="text-center">
           <a href="#/forgot-password">找回密码</a>
         </p>
       </div>
-   
+
            </form>
+    </div>
   </ion-content>
 </ion-view>

@@ -1,10 +1,12 @@
 .bar_defined {
   background-color: #52cac1;
+  height: 55px;
 }
 
 .bar .title {
-  font-size: 15px;
+  font-size: 18px;
   color: #ffffff;
+  top: 5px;
 }
 /*---------牛人------------*/
 
@@ -55,10 +57,10 @@
 
 .wrapper .button-defined {
   background-color: #52cac1;
-  font-size: 16px;
-  min-width: 175px;
+  font-size: 18px;
+  min-width: 180px !important;
   color: #ffffff;
-  min-height: 30px;
+  min-height: 40px;
   line-height: 30px;
 }
 /*----------牛人------------*/
@@ -82,7 +84,7 @@
 .publish_head .row .col h5.title {
   color: #ffffff;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   position: relative;
   top: -5px;
 }
@@ -92,6 +94,9 @@
   position: relative;
   top: -3px;
   word-wrap: break-word;
+  width: 30px;
+  font-size: 15px;
+  right: 10px;
 }
 
 .publish_pc {
@@ -129,6 +134,7 @@
   font-size:18px;
   color:#52cac1;
   right: 0;
+  z-index: 10;
 }
 .publish_content .publish_warning {
   font-size: 12px;
@@ -143,6 +149,7 @@
   position: absolute;
   right: 24px;
   top:10px;
+  width: auto !important;
 }
 .fabu-box {
   text-align: center;
@@ -212,13 +219,17 @@ button.fabu {
   background-color: #5ED2CB !important;
   border: none !important;
 }
+.fabu-bar {
+  z-index: 20;
+  height: 55px;
+}
 .fabu-bar > .icon {
   font-size: 24px;
   color: #fff;
 }
 .fabu-bar > .icon:nth-child(1) {
   position: absolute;
-  top: 10px;
+  top: 16px;
   left: 10px;
 }
 .fabu-bar > .icon:nth-child(3) {
@@ -273,18 +284,20 @@ button.fabu {
   color: #444;
 }
 .compInfo > .list-defined > .item>span:nth-child(2) {
-  font-size:13px;
-  color: #777;
-  position: absolute;
-  top: 9px;
-  right: 10px;
+  font-size: 13px;
+    color: #777;
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    text-align: right;
+    width: auto;
 }
 
 /*-----职位类型-----*/
 .jobType .input-box {
   text-align: center;
   height: 37px;
-
+  z-index: 100 !important;
 }
 .jobType .input-box>label>.icon:nth-child(1) {
   position: absolute;
@@ -322,8 +335,103 @@ button.fabu {
   color: #333333;
   font-size: 13px;;
 }
+#searchType::-webkit-input-placeholder {
+  position: relative;
+  left: 24px;
+  top: -1px;
+}
+#searchType::-moz-placeholder {
+  position: relative;
+  left: 24px;
+  top: -1px;
+}
+#searchType:-ms-input-placeholder {
+  position: relative;
+  left: 24px;
+  top: -1px;
+}
+.jiShu{
+  width: calc(100% - 55px);
+  height: calc(100% - 82px);
+  position: absolute !important;
+  left: 55px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 82px !important;
+  box-shadow: -5px 0 5px 1px #333;
+}
+.skillContents {
+  text-align: center;
+}
+.skillContents > .list >.item {
+  border: none;
+  margin: 0;
+  font-size: 15px;
+}
+.skillRight {
+  position: relative;
+}
+.skillRight .item {
+  height: 52px;
+  width: 100%;
+  border: none;
+  position: absolute;
+  top: 0;
+}
+.otherSkill {
+  background-color: #f1f1f1;
+}
+.otherSkill .bar_defined .icon:nth-of-type(1){
+  font-size: 24px;
+  color: #ffffff;
+  padding: 0 10px;
+  line-height: 36px;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}
+.otherSkill .bar_defined .icon:nth-of-type(2){
+  font-size: 40px;
+  color: #ffffff;
+  padding: 0 10px;
+  line-height: 36px;
+  position: absolute;
+  top: 7px;
+  right: 0;
+  cursor: pointer;
+}
+.otherSkill label{
+  position: absolute;
+  top: 10px;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+}
 
-/*------职位名称-----*/
+#inputJobName {
+  width: 95%;
+  height: 70%;
+  display: inline-block;
+  background-color: #f1f1f1;
+  position: relative;
+  top: 6px;
+  border-radius: 5px;
+  text-indent: 10px;
+  font-size: 18px;
+}
+.skillRight .item select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
+  max-width: none;
+}
+  /*------职位名称-----*/
 .jobName {
   position: relative;
   text-align: center;
@@ -335,18 +443,180 @@ button.fabu {
   top: 10px;
   color: #5ED2CB;
 }
-.jobName > .warning{
+.jobName  .warning{
   color: #777;
   padding:8px 10px;
   font-size:13px;
   text-align: left;
 }
-.jobName > #jobName{
+.jobName  input{
   width: 98%;
   display:inline-block;
   text-indent: 10px;
   color: #777;
 }
+
+/*------薪资范围--------*/
+.salaryRange{
+  width:100% !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  height: 200px;
+  margin: 0 !important;
+  padding: 0 !important;
+  top:auto !important;
+}
+
+.salary-bar {
+  background-color: #fff !important;
+  height: 40px !important;
+  text-align: center;
+  border-bottom:1px solid #d0d0d0 !important;
+}
+.salary-bar>.icon{
+  color: #5ED2CB ;
+  font-size: 30px;
+}
+.salary-bar>.title{
+  color: #333;
+  font-size:14px;
+  margin: 0;
+  padding: 0;
+  line-height: 40px;
+  left: 0 !important;
+  right: 0 !important;
+  position: absolute;
+}
+.salary-bar .icon:nth-child(1) {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  z-index: 1;
+}
+.salary-bar > .icon:nth-child(3) {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  font-size: 30px;
+}
+
+.salary-left-items>.list{
+  text-align: center;
+  padding-top: 62px;
+  padding-bottom: 92px;
+}
+.salary-right-items>.list{
+  text-align: center;
+  padding-top: 62px;
+  padding-bottom: 92px;
+}
+.salary-right-items>.list{
+  text-align: center;
+}
+/*.salary-left-items > .list .item:nth-child(odd) {*/
+  /*background-color: yellow;*/
+/*}*/
+/*.salary-right-items > .list .item:nth-child(odd) {*/
+  /*background-color: orange;*/
+/*}*/
+.salary-left-items > .list > .item {
+  height: 35px;
+  border: none !important;
+  padding: 0;
+  margin: 0;
+  border-image-width: unset !important;
+}
+.salary-right-items > .list > .item {
+  height: 35px;
+  border: none !important;
+  padding: 0;
+  margin: 0;
+  border-image-width: unset !important;
+}
+.salary-left-items>.list>.item>span{
+  position: relative;
+  top: 4px;
+}
+.salary-right-items>.list>.item{
+  height: 35px;
+  border:none;
+}
+.salary-right-items>.list>.item>span{
+  position: relative;
+  top:4px;
+}
+.line1 {
+  width: 100%;
+  height: 1px;
+  background-color: #d0d0d0;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+}
+.line2{
+  width: 100%;
+  height: 1px;
+  background-color: #d0d0d0;
+  position: absolute;
+  z-index: 10;
+  top:calc(50% + 35px);
+}
+/*------经验要求-------*/
+.expRequire {
+  width:100% !important;
+  position: absolute;
+  left: 0 !important;
+  bottom: 0 !important;
+  height: 200px;
+  margin: 0 !important;
+  padding: 0 !important;
+  top:auto !important;
+}
+.blank-select {
+  position: absolute;
+  top: 100px;
+  height: 35px;
+  border-top: 1px solid #d0d0d0;
+  border-bottom: 1px solid #d0d0d0;
+  z-index: 100;
+  width: 100%;
+  left: 0;
+}
+.exp-items>.list{
+  text-align: center;
+  padding-top:62px;
+  padding-bottom: 92px;
+}
+.exp-items>.list>.item{
+  height: 35px;
+  border: none !important;
+  padding: 0;
+  margin: 0;
+  border-image-width: unset !important;
+}
+/*.exp-items > .list .item:nth-child(odd) {*/
+  /*background-color: yellow;*/
+/*}*/
+.exp-items>.list>.item>span{
+  position: relative;
+  top:4px;
+}
+/*工作城市*/
+.item-workCity{
+  z-index: 10;
+}
+/*----工作地点-----*/
+
+/*----职位描述-----*/
+.jobDes textarea{
+  width: 100% !important;
+  font-size: 16px;
+  line-height: 18px;
+  padding: 10px 5px;
+  color: #333;
+}
+
 /*--------发布职位----------*/
 
 /*----------消息-----------*/
@@ -560,4 +830,47 @@ button.fabu {
   -moz-animation: fadeOut 0.3s;
   animation:fadeOut 0.3s;
   position: absolute;
+}
+
+.act {
+  color: #3bc2ba;
+}
+.tags {
+  position: absolute;
+  top: 55px;
+}
+.tags p {
+  text-align: center;
+  color: #333;
+  margin: 10px 0 4px 0;
+}
+.tags ul li {
+  width: auto;
+  text-align: center;
+  padding: 5px 10px;
+  float: left;
+  border: 1px solid #666;
+  margin: 10px 0 0 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.tags ul li:nth-last-of-type(1) {
+  padding:5px 20px;
+  color: #3bc2ba;
+  font-weight: 600;
+  border: 1px dashed #3bc2ba;
+  font-size: 28px;
+}
+.tags ul li.aa {
+  color: #fff;
+  background-color: #3bc2ba;
+  border:1px solid #fff;
+}
+.photo-parent{
+  text-align: center;
+  margin-top: 10px;
+}
+.photo-parent img.photo {
+  width: 100px;
+  height: 100px;
 }

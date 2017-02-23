@@ -58,9 +58,9 @@ angular.module('jobseekers.controllers', [])
 	// rootScope 可以在各个控制器使用
 	$scope.signIn = function(user) {
 
-		// 就是调用				
+		// 就是调用
 		// url http://localhost/thinkphp_5.0.2_full/public/user/login
-		// user_name和user_pwd 
+		// user_name和user_pwd
 		// 返回json格式
 		// jquery ajax
 		$http({

@@ -258,20 +258,26 @@ angular.module('jobseekers.services', [])
   })
 
 	//简历服务
-	.factory('resume', function($http) {
+	.factory('resume', function($http, $rootScope) {
 		return {
-			//加载数据
+			//加载数据 
 			load: function() {
-				return $http.get(location.origin + '/haoapp/resume.json')
-					.then(function(response) {
-						return response['data'];
-					})
+				return $http({
+					method: "get",
+					url: "http://127.0.0.1/aoshi/index.php/Jobseekers/?a=select"
+				}).then(function(response) {
+					$rootScope.user = response.data['user'];
+					$rootScope.basic = response.data['basic'];
+					$rootScope.jobexp = response.data['experience'];
+					$rootScope.eduexp = response.data['education'];
+					$rootScope.career = response.data['prefered'];
+				})
 			},
 			//保存数据
 			save: function(index, data) {
 				$http({
 					method: 'get',
-					url: location.href + '?a=save&index=' + index,
+					url: 'http://127.0.0.1/aoshi/index.php/Jobseekers/?a=save&index=' + index,
 					params: data
 				})
 			},
@@ -279,7 +285,7 @@ angular.module('jobseekers.services', [])
 			remove: function(index, data) {
 				$http({
 					method: 'get',
-					url: location.href + '?a=delete&index=' + index,
+					url: 'http://127.0.0.1/aoshi/index.php/Jobseekers?a=delete&index=' + index,
 					params: data
 				})
 			}
